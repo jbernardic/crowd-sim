@@ -2,8 +2,12 @@
 #include "agent.h"
 #include "processors/steering.h"
 #include "processors/avoidance.h"
+#include "processors/separation.h"
 #include "processors/movement.h"
 #include "processors/arrival.h"
+#include "processors/walls.h"
+#include "processors/pathfinding.h"
+#include <unordered_set>
 
 static AgentData make_agents() {
     AgentData data;
@@ -17,31 +21,30 @@ static AgentData make_agents() {
 }
 
 static AgentData agents = make_agents();
+static std::unordered_set<uint64_t> wall_tiles;
 
-static SteeringConfig  steering_cfg;
-static AvoidanceConfig avoidance_cfg;
-static ArrivalConfig   arrival_cfg;
-
-SteeringConfig&  get_steering_config()  { return steering_cfg; }
-AvoidanceConfig& get_avoidance_config() { return avoidance_cfg; }
-ArrivalConfig&   get_arrival_config()   { return arrival_cfg; }
+void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); pathfinding_invalidate(); }
+const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
 
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
     for (int i = 0; i < agents.size(); ++i) {
         if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect)) {
             agents.targets[i] = pos;
-            agents.arrived[i] = 0;
+            agents.arrived[i] = 0.0f;
         }
     }
 }
 
 void sim_tick(const float dt) {
-    apply_steering (agents.positions, agents.targets, agents.vel, steering_cfg);
-    apply_avoidance(agents.positions, agents.vel, avoidance_cfg);
-    apply_arrival  (agents.positions, agents.targets, agents.vel, agents.arrived, arrival_cfg);
-    apply_movement (agents.positions, agents.vel, dt);
-    apply_separation(agents.positions, avoidance_cfg);
+    apply_pathfinding  (agents.positions, agents.targets, agents.arrived, wall_tiles);
+    apply_steering     (agents.positions, get_waypoints(), agents.vel);
+    apply_avoidance    (agents.positions, agents.vel, dt);
+    apply_arrival      (agents.positions, agents.targets, agents.vel, agents.arrived, dt);
+    apply_separation   (agents.positions, agents.vel, dt);
+    apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
+    apply_movement      (agents.positions, agents.vel, dt);
 }
 
 const std::vector<Vector3>& get_agent_positions() { return agents.positions; }
 const std::vector<Vector3>& get_agent_targets()   { return agents.targets;   }
+const std::vector<float>&   get_agent_arrived()   { return agents.arrived;   }

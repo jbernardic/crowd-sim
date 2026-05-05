@@ -1,10 +1,10 @@
 #include "ui.h"
-#include "simulation/engine.h"
+#include "simulation/config.h"
 #include "imgui.h"
 
 static constexpr float panel_width   = 400.0f;
 static constexpr float panel_padding = 20.0f;
-static constexpr float panel_gap = 200.0f;
+static constexpr float panel_gap = 150.0f;
 
 static float panel_cursor_y = panel_padding;
 
@@ -31,7 +31,10 @@ static void draw_panel(const char* title, std::vector<ConfigField> fields) {
 
 void ui_draw() {
     panel_cursor_y = panel_padding;
+    draw_panel("Pathfinding", get_pathfinding_config().fields());
+    draw_panel("Agent",       get_agent_config().fields());
     draw_panel("Steering",  get_steering_config().fields());
     draw_panel("Avoidance", get_avoidance_config().fields());
     draw_panel("Arrival",   get_arrival_config().fields());
+    draw_panel("Walls",     get_wall_config().fields());
 }

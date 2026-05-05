@@ -1,8 +1,8 @@
-#include "avoidance.h"
+#include "separation.h"
 #include "../config.h"
 #include "raymath.h"
 
-void apply_avoidance(
+void apply_separation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       vel,
     float                       dt)
@@ -18,10 +18,9 @@ void apply_avoidance(
             float dist = Vector3Length(diff);
             if (dist < 0.001f) { diff = { 1.0f, 0.0f, 0.0f }; dist = 0.001f; }
             if (dist >= diameter) continue;
-            const float overlap = diameter - dist;
-            const Vector3 push = Vector3Scale(Vector3Normalize(diff), cfg.avoidance_strength * (overlap / diameter));
-            vel[i] += push;
-            vel[j] -= push;
+            Vector3 impulse = Vector3Scale(Vector3Normalize(diff), (diameter - dist) * 0.5f / dt);
+            vel[i] += impulse;
+            vel[j] -= impulse;
         }
     }
 }

@@ -47,6 +47,13 @@ add_executable(crowd-sim
         src/simulation/processors/avoidance.cpp
         src/simulation/processors/arrival.cpp
         src/simulation/processors/arrival.h
+        src/simulation/processors/walls.cpp
+        src/simulation/processors/walls.h
+        src/simulation/config.cpp
+        src/simulation/processors/separation.h
+        src/simulation/processors/separation.cpp
+        src/simulation/processors/pathfinding.cpp
+        src/simulation/processors/pathfinding.h
 )
 target_link_libraries(crowd-sim PRIVATE raylib rlimgui imgui)
 target_include_directories(crowd-sim PRIVATE
