@@ -1,6 +1,6 @@
 #pragma once
-#include "../agent.h"
 #include "../config.h"
+#include "raylib.h"
 #include <vector>
 
 struct SteeringConfig {
@@ -15,4 +15,8 @@ struct SteeringConfig {
     }
 };
 
-void apply_steering(const std::vector<Agent>& agents, std::vector<Vector3>& vel, const SteeringConfig& cfg);
+void apply_steering(
+    const std::vector<Vector3>& positions,
+    const std::vector<Vector3>& targets,
+    std::vector<Vector3>&       vel,
+    const SteeringConfig&       cfg);

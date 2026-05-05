@@ -4,6 +4,7 @@
 
 static constexpr float panel_width   = 400.0f;
 static constexpr float panel_padding = 20.0f;
+static constexpr float panel_gap = 200.0f;
 
 static float panel_cursor_y = panel_padding;
 
@@ -25,11 +26,12 @@ static void draw_panel(const char* title, std::vector<ConfigField> fields) {
     }
     ImGui::End();
     
-    panel_cursor_y += ImGui::GetWindowSize().y;
+    panel_cursor_y += panel_gap;
 }
 
 void ui_draw() {
     panel_cursor_y = panel_padding;
     draw_panel("Steering",  get_steering_config().fields());
     draw_panel("Avoidance", get_avoidance_config().fields());
+    draw_panel("Arrival",   get_arrival_config().fields());
 }

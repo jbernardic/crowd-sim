@@ -1,6 +1,6 @@
 #pragma once
-#include "../agent.h"
 #include "../config.h"
+#include "raylib.h"
 #include <vector>
 
 struct AvoidanceConfig {
@@ -10,12 +10,18 @@ struct AvoidanceConfig {
 
     std::vector<ConfigField> fields() {
         return {
-            ConfigBoolField{  "Enabled",            &enabled                           },
+            ConfigBoolField{  "Enabled",            &enabled                            },
             ConfigFloatField{ "Agent Radius",        &agent_radius,       1.0f,   60.0f },
             ConfigFloatField{ "Avoidance Strength",  &avoidance_strength, 0.0f, 1000.0f },
         };
     }
 };
 
-void apply_avoidance(const std::vector<Agent>& agents, std::vector<Vector3>& vel, const AvoidanceConfig& cfg);
-void apply_separation(std::vector<Agent>& agents, const AvoidanceConfig& cfg);
+void apply_avoidance(
+    const std::vector<Vector3>& positions,
+    std::vector<Vector3>&       vel,
+    const AvoidanceConfig&      cfg);
+
+void apply_separation(
+    std::vector<Vector3>&  positions,
+    const AvoidanceConfig& cfg);

@@ -1,5 +1,8 @@
 #pragma once
-#include "../agent.h"
+#include "raylib.h"
 #include <vector>
 
-void apply_movement(std::vector<Agent>& agents, const std::vector<Vector3>& vel, float dt);
+void apply_movement(
+    std::vector<Vector3>&       positions,
+    const std::vector<Vector3>& vel,
+    float                       dt);
