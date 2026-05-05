@@ -1,0 +1,7 @@
+.vs/
+out/build/x64-debug/
+out/build/x64-release/
+out/build/x86-debug/
+out/build/x86-release/
+out/build/web/*
+!out/build/web/index.*

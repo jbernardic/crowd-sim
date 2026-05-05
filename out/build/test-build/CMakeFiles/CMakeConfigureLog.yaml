@@ -1,0 +1,1736 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.14.23+b0019275e for .NET Framework
+      Build started 5/1/2026 9:24:30 PM.
+      
+      Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.33
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/4.2.3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link"
+      - "C:/Users/janux/bin/lld-link.com"
+      - "C:/Users/janux/bin/lld-link.exe"
+      - "C:/Users/janux/bin/lld-link"
+      - "C:/Program Files/Git/mingw64/bin/lld-link.com"
+      - "C:/Program Files/Git/mingw64/bin/lld-link.exe"
+      - "C:/Program Files/Git/mingw64/bin/lld-link"
+      - "C:/Program Files/Git/usr/local/bin/lld-link.com"
+      - "C:/Program Files/Git/usr/local/bin/lld-link.exe"
+      - "C:/Program Files/Git/usr/local/bin/lld-link"
+      - "C:/Program Files/Git/usr/bin/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/lld-link"
+      - "C:/Python314/Scripts/lld-link.com"
+      - "C:/Python314/Scripts/lld-link.exe"
+      - "C:/Python314/Scripts/lld-link"
+      - "C:/Python314/lld-link.com"
+      - "C:/Python314/lld-link.exe"
+      - "C:/Python314/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/ProgramData/chocolatey/bin/lld-link.com"
+      - "C:/ProgramData/chocolatey/bin/lld-link.exe"
+      - "C:/ProgramData/chocolatey/bin/lld-link"
+      - "C:/Programs/lld-link.com"
+      - "C:/Programs/lld-link.exe"
+      - "C:/Programs/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link"
+      - "C:/Users/janux/.dotnet/tools/lld-link.com"
+      - "C:/Users/janux/.dotnet/tools/lld-link.exe"
+      - "C:/Users/janux/.dotnet/tools/lld-link"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/janux/.aftman/bin/lld-link.com"
+      - "C:/Users/janux/.aftman/bin/lld-link.exe"
+      - "C:/Users/janux/.aftman/bin/lld-link"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link.com"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link.exe"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link.com"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link.exe"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "CMAKE_MT"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "mt"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/mt"
+      - "C:/Users/janux/bin/mt.com"
+      - "C:/Users/janux/bin/mt.exe"
+      - "C:/Users/janux/bin/mt"
+      - "C:/Program Files/Git/mingw64/bin/mt.com"
+      - "C:/Program Files/Git/mingw64/bin/mt.exe"
+      - "C:/Program Files/Git/mingw64/bin/mt"
+      - "C:/Program Files/Git/usr/local/bin/mt.com"
+      - "C:/Program Files/Git/usr/local/bin/mt.exe"
+      - "C:/Program Files/Git/usr/local/bin/mt"
+      - "C:/Program Files/Git/usr/bin/mt.com"
+      - "C:/Program Files/Git/usr/bin/mt.exe"
+      - "C:/Program Files/Git/usr/bin/mt"
+      - "C:/Python314/Scripts/mt.com"
+      - "C:/Python314/Scripts/mt.exe"
+      - "C:/Python314/Scripts/mt"
+      - "C:/Python314/mt.com"
+      - "C:/Python314/mt.exe"
+      - "C:/Python314/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt"
+      - "C:/Windows/System32/mt.com"
+      - "C:/Windows/System32/mt.exe"
+      - "C:/Windows/System32/mt"
+      - "C:/Windows/mt.com"
+      - "C:/Windows/mt.exe"
+      - "C:/Windows/mt"
+      - "C:/Windows/System32/wbem/mt.com"
+      - "C:/Windows/System32/wbem/mt.exe"
+      - "C:/Windows/System32/wbem/mt"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
+      - "C:/Windows/System32/OpenSSH/mt.com"
+      - "C:/Windows/System32/OpenSSH/mt.exe"
+      - "C:/Windows/System32/OpenSSH/mt"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/mt"
+      - "C:/Program Files/dotnet/mt.com"
+      - "C:/Program Files/dotnet/mt.exe"
+      - "C:/Program Files/dotnet/mt"
+      - "C:/Program Files/Git/cmd/mt.com"
+      - "C:/Program Files/Git/cmd/mt.exe"
+      - "C:/Program Files/Git/cmd/mt"
+      - "C:/Program Files/nodejs/mt.com"
+      - "C:/Program Files/nodejs/mt.exe"
+      - "C:/Program Files/nodejs/mt"
+      - "C:/ProgramData/chocolatey/bin/mt.com"
+      - "C:/ProgramData/chocolatey/bin/mt.exe"
+      - "C:/ProgramData/chocolatey/bin/mt"
+      - "C:/Programs/mt.com"
+      - "C:/Programs/mt.exe"
+      - "C:/Programs/mt"
+      - "C:/Program Files/CMake/bin/mt.com"
+      - "C:/Program Files/CMake/bin/mt.exe"
+      - "C:/Program Files/CMake/bin/mt"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/mt.com"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/mt.exe"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/mt"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/mt.com"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/mt.exe"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/mt"
+      - "C:/Users/janux/.dotnet/tools/mt.com"
+      - "C:/Users/janux/.dotnet/tools/mt.exe"
+      - "C:/Users/janux/.dotnet/tools/mt"
+      - "C:/Users/janux/AppData/Roaming/npm/mt.com"
+      - "C:/Users/janux/AppData/Roaming/npm/mt.exe"
+      - "C:/Users/janux/AppData/Roaming/npm/mt"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/mt"
+      - "C:/Users/janux/.aftman/bin/mt.com"
+      - "C:/Users/janux/.aftman/bin/mt.exe"
+      - "C:/Users/janux/.aftman/bin/mt"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/mt.com"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/mt.exe"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/mt"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.com"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.exe"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/mt.com"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/mt.exe"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/mt"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/mt.com"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/mt.exe"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/mt"
+      - "C:/Program Files/Git/usr/bin/core_perl/mt.com"
+      - "C:/Program Files/Git/usr/bin/core_perl/mt.exe"
+      - "C:/Program Files/Git/usr/bin/core_perl/mt"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lib"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lib.com"
+    found: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lib.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/"
+    found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.14.23+b0019275e for .NET Framework
+      Build started 5/1/2026 9:24:31 PM.
+      
+      Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\4.2.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:00.36
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/4.2.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:65 (__resolve_tool_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeFindBinUtils.cmake:104 (__resolve_linker_path)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/"
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/lld-link"
+      - "C:/Users/janux/bin/lld-link.com"
+      - "C:/Users/janux/bin/lld-link.exe"
+      - "C:/Users/janux/bin/lld-link"
+      - "C:/Program Files/Git/mingw64/bin/lld-link.com"
+      - "C:/Program Files/Git/mingw64/bin/lld-link.exe"
+      - "C:/Program Files/Git/mingw64/bin/lld-link"
+      - "C:/Program Files/Git/usr/local/bin/lld-link.com"
+      - "C:/Program Files/Git/usr/local/bin/lld-link.exe"
+      - "C:/Program Files/Git/usr/local/bin/lld-link"
+      - "C:/Program Files/Git/usr/bin/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/lld-link"
+      - "C:/Python314/Scripts/lld-link.com"
+      - "C:/Python314/Scripts/lld-link.exe"
+      - "C:/Python314/Scripts/lld-link"
+      - "C:/Python314/lld-link.com"
+      - "C:/Python314/lld-link.exe"
+      - "C:/Python314/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/ProgramData/chocolatey/bin/lld-link.com"
+      - "C:/ProgramData/chocolatey/bin/lld-link.exe"
+      - "C:/ProgramData/chocolatey/bin/lld-link"
+      - "C:/Programs/lld-link.com"
+      - "C:/Programs/lld-link.exe"
+      - "C:/Programs/lld-link"
+      - "C:/Program Files/CMake/bin/lld-link.com"
+      - "C:/Program Files/CMake/bin/lld-link.exe"
+      - "C:/Program Files/CMake/bin/lld-link"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/lld-link"
+      - "C:/Users/janux/.dotnet/tools/lld-link.com"
+      - "C:/Users/janux/.dotnet/tools/lld-link.exe"
+      - "C:/Users/janux/.dotnet/tools/lld-link"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/janux/AppData/Roaming/npm/lld-link"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/janux/.aftman/bin/lld-link.com"
+      - "C:/Users/janux/.aftman/bin/lld-link.exe"
+      - "C:/Users/janux/.aftman/bin/lld-link"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link.com"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link.exe"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/lld-link"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.com"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.exe"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link.com"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link.exe"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/lld-link"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/lld-link"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link.com"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link.exe"
+      - "C:/Program Files/Git/usr/bin/core_perl/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineRCCompiler.cmake:40 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake:580 (enable_language)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake:553 (__windows_compiler_msvc_enable_rc)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-C.cmake:5 (__windows_compiler_msvc)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCInformation.cmake:48 (include)"
+      - "CMakeLists.txt:9 (project)"
+    mode: "program"
+    variable: "CMAKE_RC_COMPILER"
+    description: "RC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "rc"
+    candidate_directories:
+      - "C:/Users/janux/bin/"
+      - "C:/Program Files/Git/mingw64/bin/"
+      - "C:/Program Files/Git/usr/local/bin/"
+      - "C:/Program Files/Git/usr/bin/"
+      - "C:/Python314/Scripts/"
+      - "C:/Python314/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/Programs/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Users/janux/.dotnet/tools/"
+      - "C:/Users/janux/AppData/Roaming/npm/"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/janux/.aftman/bin/"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/"
+      - "C:/Program Files/Git/usr/bin/core_perl/"
+      - "C:/Program Files/bin/"
+      - "C:/Program Files/sbin/"
+      - "C:/Program Files/"
+      - "C:/Program Files (x86)/bin/"
+      - "C:/Program Files (x86)/sbin/"
+      - "C:/Program Files (x86)/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/Program Files/CMake/sbin/"
+      - "C:/Program Files/CMake/"
+      - "C:/Program Files (x86)/crowd-sim/bin/"
+      - "C:/Program Files (x86)/crowd-sim/sbin/"
+      - "C:/Program Files (x86)/crowd-sim/"
+    searched_directories:
+      - "C:/Users/janux/bin/rc.com"
+      - "C:/Users/janux/bin/rc.exe"
+      - "C:/Users/janux/bin/rc"
+      - "C:/Program Files/Git/mingw64/bin/rc.com"
+      - "C:/Program Files/Git/mingw64/bin/rc.exe"
+      - "C:/Program Files/Git/mingw64/bin/rc"
+      - "C:/Program Files/Git/usr/local/bin/rc.com"
+      - "C:/Program Files/Git/usr/local/bin/rc.exe"
+      - "C:/Program Files/Git/usr/local/bin/rc"
+      - "C:/Program Files/Git/usr/bin/rc.com"
+      - "C:/Program Files/Git/usr/bin/rc.exe"
+      - "C:/Program Files/Git/usr/bin/rc"
+      - "C:/Python314/Scripts/rc.com"
+      - "C:/Python314/Scripts/rc.exe"
+      - "C:/Python314/Scripts/rc"
+      - "C:/Python314/rc.com"
+      - "C:/Python314/rc.exe"
+      - "C:/Python314/rc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc"
+      - "C:/Windows/System32/rc.com"
+      - "C:/Windows/System32/rc.exe"
+      - "C:/Windows/System32/rc"
+      - "C:/Windows/rc.com"
+      - "C:/Windows/rc.exe"
+      - "C:/Windows/rc"
+      - "C:/Windows/System32/wbem/rc.com"
+      - "C:/Windows/System32/wbem/rc.exe"
+      - "C:/Windows/System32/wbem/rc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc"
+      - "C:/Windows/System32/OpenSSH/rc.com"
+      - "C:/Windows/System32/OpenSSH/rc.exe"
+      - "C:/Windows/System32/OpenSSH/rc"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/rc.com"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/rc.exe"
+      - "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/rc"
+      - "C:/Program Files/dotnet/rc.com"
+      - "C:/Program Files/dotnet/rc.exe"
+      - "C:/Program Files/dotnet/rc"
+      - "C:/Program Files/Git/cmd/rc.com"
+      - "C:/Program Files/Git/cmd/rc.exe"
+      - "C:/Program Files/Git/cmd/rc"
+      - "C:/Program Files/nodejs/rc.com"
+      - "C:/Program Files/nodejs/rc.exe"
+      - "C:/Program Files/nodejs/rc"
+      - "C:/ProgramData/chocolatey/bin/rc.com"
+      - "C:/ProgramData/chocolatey/bin/rc.exe"
+      - "C:/ProgramData/chocolatey/bin/rc"
+      - "C:/Programs/rc.com"
+      - "C:/Programs/rc.exe"
+      - "C:/Programs/rc"
+      - "C:/Program Files/CMake/bin/rc.com"
+      - "C:/Program Files/CMake/bin/rc.exe"
+      - "C:/Program Files/CMake/bin/rc"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/rc.com"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/rc.exe"
+      - "C:/Users/janux/AppData/Local/Microsoft/WindowsApps/rc"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/rc.com"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/rc.exe"
+      - "C:/Users/janux/AppData/Local/GitHubDesktop/bin/rc"
+      - "C:/Users/janux/.dotnet/tools/rc.com"
+      - "C:/Users/janux/.dotnet/tools/rc.exe"
+      - "C:/Users/janux/.dotnet/tools/rc"
+      - "C:/Users/janux/AppData/Roaming/npm/rc.com"
+      - "C:/Users/janux/AppData/Roaming/npm/rc.exe"
+      - "C:/Users/janux/AppData/Roaming/npm/rc"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/rc.com"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/rc.exe"
+      - "C:/Users/janux/AppData/Local/Programs/Microsoft VS Code/bin/rc"
+      - "C:/Users/janux/.aftman/bin/rc.com"
+      - "C:/Users/janux/.aftman/bin/rc.exe"
+      - "C:/Users/janux/.aftman/bin/rc"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/rc.com"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/rc.exe"
+      - "C:/Program Files/JetBrains/IntelliJ IDEA 2026.1/bin/rc"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc.com"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc.exe"
+      - "C:/Users/janux/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/rc.com"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/rc.exe"
+      - "C:/Program Files/JetBrains/JetBrains Rider 2026.1.1/bin/rc"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/rc.com"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/rc.exe"
+      - "C:/Program Files/Git/usr/bin/vendor_perl/rc"
+      - "C:/Program Files/Git/usr/bin/core_perl/rc.com"
+      - "C:/Program Files/Git/usr/bin/core_perl/rc.exe"
+      - "C:/Program Files/Git/usr/bin/core_perl/rc"
+      - "C:/Program Files/bin/rc.com"
+      - "C:/Program Files/bin/rc.exe"
+      - "C:/Program Files/bin/rc"
+      - "C:/Program Files/sbin/rc.com"
+      - "C:/Program Files/sbin/rc.exe"
+      - "C:/Program Files/sbin/rc"
+      - "C:/Program Files/rc.com"
+      - "C:/Program Files/rc.exe"
+      - "C:/Program Files/rc"
+      - "C:/Program Files (x86)/bin/rc.com"
+      - "C:/Program Files (x86)/bin/rc.exe"
+      - "C:/Program Files (x86)/bin/rc"
+      - "C:/Program Files (x86)/sbin/rc.com"
+      - "C:/Program Files (x86)/sbin/rc.exe"
+      - "C:/Program Files (x86)/sbin/rc"
+      - "C:/Program Files (x86)/rc.com"
+      - "C:/Program Files (x86)/rc.exe"
+      - "C:/Program Files (x86)/rc"
+      - "C:/Program Files/CMake/bin/rc.com"
+      - "C:/Program Files/CMake/bin/rc.exe"
+      - "C:/Program Files/CMake/bin/rc"
+      - "C:/Program Files/CMake/sbin/rc.com"
+      - "C:/Program Files/CMake/sbin/rc.exe"
+      - "C:/Program Files/CMake/sbin/rc"
+      - "C:/Program Files/CMake/rc.com"
+      - "C:/Program Files/CMake/rc.exe"
+      - "C:/Program Files/CMake/rc"
+      - "C:/Program Files (x86)/crowd-sim/bin/rc.com"
+      - "C:/Program Files (x86)/crowd-sim/bin/rc.exe"
+      - "C:/Program Files (x86)/crowd-sim/bin/rc"
+      - "C:/Program Files (x86)/crowd-sim/sbin/rc.com"
+      - "C:/Program Files (x86)/crowd-sim/sbin/rc.exe"
+      - "C:/Program Files (x86)/crowd-sim/sbin/rc"
+      - "C:/Program Files (x86)/crowd-sim/rc.com"
+      - "C:/Program Files (x86)/crowd-sim/rc.exe"
+      - "C:/Program Files (x86)/crowd-sim/rc"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\local\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Program Files\\Git\\mingw64\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin"
+        - "C:\\Users\\janux\\bin"
+        - "C:\\Python314\\Scripts"
+        - "C:\\Python314"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0"
+        - "C:\\WINDOWS\\System32\\OpenSSH"
+        - "C:\\Program Files\\NVIDIA Corporation\\NVIDIA App\\NvDLISR"
+        - "C:\\Program Files\\dotnet"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\nodejs"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\Programs"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\janux\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Users\\janux\\AppData\\Roaming\\npm"
+        - "C:\\Users\\janux\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\janux\\.aftman\\bin"
+        - "C:\\Users\\janux\\.dotnet\\tools"
+        - "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\bin"
+        - "C:\\Users\\janux\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+        - "C:\\Program Files\\JetBrains\\JetBrains Rider 2026.1.1\\bin"
+        - "C:\\Program Files\\Git\\usr\\bin\\vendor_perl"
+        - "C:\\Program Files\\Git\\usr\\bin\\core_perl"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/crowd-sim"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/Program Files/CMake"
+        - "C:/Program Files (x86)/crowd-sim"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-8jfiul"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-8jfiul"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-8jfiul'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_89f82.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:31 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-8jfiul\\cmTC_89f82.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-8jfiul\\Debug\\".
+          Creating directory "cmTC_89f82.dir\\Debug\\cmTC_89f82.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_89f82.dir\\Debug\\cmTC_89f82.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_89f82.dir\\Debug\\cmTC_89f82.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_89f82.dir\\Debug\\\\" /Fd"cmTC_89f82.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_89f82.dir\\Debug\\\\" /Fd"cmTC_89f82.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-8jfiul\\Debug\\cmTC_89f82.exe" /INCREMENTAL /ILK:"cmTC_89f82.dir\\Debug\\cmTC_89f82.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-8jfiul/Debug/cmTC_89f82.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-8jfiul/Debug/cmTC_89f82.lib" /MACHINE:X64  /machine:x64 cmTC_89f82.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_89f82.vcxproj -> C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-8jfiul\\Debug\\cmTC_89f82.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_89f82.dir\\Debug\\cmTC_89f82.tlog\\unsuccessfulbuild".
+          Touching "cmTC_89f82.dir\\Debug\\cmTC_89f82.tlog\\cmTC_89f82.lastbuildstate".
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-8jfiul\\cmTC_89f82.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.32
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.38.33145.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-po7qew"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-po7qew"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-po7qew'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_83fcf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:32 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-po7qew\\cmTC_83fcf.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-po7qew\\Debug\\".
+          Creating directory "cmTC_83fcf.dir\\Debug\\cmTC_83fcf.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_83fcf.dir\\Debug\\cmTC_83fcf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_83fcf.dir\\Debug\\cmTC_83fcf.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /std:c++17 /Fo"cmTC_83fcf.dir\\Debug\\\\" /Fd"cmTC_83fcf.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /std:c++17 /Fo"cmTC_83fcf.dir\\Debug\\\\" /Fd"cmTC_83fcf.dir\\Debug\\vc143.pdb" /external:W3 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-po7qew\\Debug\\cmTC_83fcf.exe" /INCREMENTAL /ILK:"cmTC_83fcf.dir\\Debug\\cmTC_83fcf.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-po7qew/Debug/cmTC_83fcf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-po7qew/Debug/cmTC_83fcf.lib" /MACHINE:X64  /machine:x64 cmTC_83fcf.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_83fcf.vcxproj -> C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-po7qew\\Debug\\cmTC_83fcf.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_83fcf.dir\\Debug\\cmTC_83fcf.tlog\\unsuccessfulbuild".
+          Touching "cmTC_83fcf.dir\\Debug\\cmTC_83fcf.tlog\\cmTC_83fcf.lastbuildstate".
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-po7qew\\cmTC_83fcf.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.35
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CMakeDetermineLinkerId.cmake:38 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerABI.cmake:299 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.38.33145.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCCompilerFlag.cmake:105 (cmake_check_compiler_flag)"
+      - "vendor/raylib-5.5/cmake/AddIfFlagCompiles.cmake:3 (CHECK_C_COMPILER_FLAG)"
+      - "vendor/raylib-5.5/cmake/CompilerFlags.cmake:5 (add_if_flag_compiles)"
+      - "vendor/raylib-5.5/CMakeLists.txt:34 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-a8j21r"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-a8j21r"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "COMPILER_HAS_THOSE_TOGGLES"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-a8j21r'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7f1cf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:32 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\cmTC_7f1cf.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\Debug\\".
+          Creating directory "cmTC_7f1cf.dir\\Debug\\cmTC_7f1cf.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_7f1cf.dir\\Debug\\cmTC_7f1cf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7f1cf.dir\\Debug\\cmTC_7f1cf.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_THOSE_TOGGLES /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_7f1cf.dir\\Debug\\\\" /Fd"cmTC_7f1cf.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue  -Werror=pointer-arith "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D COMPILER_HAS_THOSE_TOGGLES /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_7f1cf.dir\\Debug\\\\" /Fd"cmTC_7f1cf.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue  -Werror=pointer-arith "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\src.c"
+        cl : command line  error D8021: invalid numeric argument '/Werror=pointer-arith' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\cmTC_7f1cf.vcxproj]
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\cmTC_7f1cf.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\cmTC_7f1cf.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          cl : command line  error D8021: invalid numeric argument '/Werror=pointer-arith' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-a8j21r\\cmTC_7f1cf.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.17
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:160 (check_c_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "vendor/raylib-5.5/src/external/glfw/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-mwmkt9"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-mwmkt9"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake;C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/src/external/glfw/CMake/modules"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-mwmkt9'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ea284.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:33 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\cmTC_ea284.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\Debug\\".
+          Creating directory "cmTC_ea284.dir\\Debug\\cmTC_ea284.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_ea284.dir\\Debug\\cmTC_ea284.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_ea284.dir\\Debug\\cmTC_ea284.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_ea284.dir\\Debug\\\\" /Fd"cmTC_ea284.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_ea284.dir\\Debug\\\\" /Fd"cmTC_ea284.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\src.c"
+          src.c
+        C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\cmTC_ea284.vcxproj]
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\cmTC_ea284.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\cmTC_ea284.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-mwmkt9\\cmTC_ea284.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.22
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:238 (_threads_check_lib)"
+      - "vendor/raylib-5.5/src/external/glfw/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-hr4wl7"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-hr4wl7"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake;C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/src/external/glfw/CMake/modules"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-hr4wl7'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f4344.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:33 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\cmTC_f4344.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\Debug\\".
+          Creating directory "cmTC_f4344.dir\\Debug\\cmTC_f4344.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_f4344.dir\\Debug\\cmTC_f4344.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_f4344.dir\\Debug\\cmTC_f4344.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f4344.dir\\Debug\\\\" /Fd"cmTC_f4344.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f4344.dir\\Debug\\\\" /Fd"cmTC_f4344.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\Debug\\cmTC_f4344.exe" /INCREMENTAL /ILK:"cmTC_f4344.dir\\Debug\\cmTC_f4344.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-hr4wl7/Debug/cmTC_f4344.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-hr4wl7/Debug/cmTC_f4344.lib" /MACHINE:X64  /machine:x64 cmTC_f4344.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\cmTC_f4344.vcxproj]
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\cmTC_f4344.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\cmTC_f4344.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-hr4wl7\\cmTC_f4344.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.24
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CheckLibraryExists.cmake:154 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake:239 (_threads_check_lib)"
+      - "vendor/raylib-5.5/src/external/glfw/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-cuba8y"
+      binary: "C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-cuba8y"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake;C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/src/external/glfw/CMake/modules"
+      CMAKE_MSVC_DEBUG_INFORMATION_FORMAT: "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-cuba8y'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_50687.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.23+b0019275e for .NET Framework
+        Build started 5/1/2026 9:24:33 PM.
+        
+        Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\cmTC_50687.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\Debug\\".
+          Creating directory "cmTC_50687.dir\\Debug\\cmTC_50687.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_50687.dir\\Debug\\cmTC_50687.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_50687.dir\\Debug\\cmTC_50687.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_50687.dir\\Debug\\\\" /Fd"cmTC_50687.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.38.33145 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_50687.dir\\Debug\\\\" /Fd"cmTC_50687.dir\\Debug\\vc143.pdb" /external:W3 /TC /errorReport:queue "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\Debug\\cmTC_50687.exe" /INCREMENTAL /ILK:"cmTC_50687.dir\\Debug\\cmTC_50687.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-cuba8y/Debug/cmTC_50687.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/CMakeScratch/TryCompile-cuba8y/Debug/cmTC_50687.lib" /MACHINE:X64  /machine:x64 cmTC_50687.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\cmTC_50687.vcxproj]
+        Done Building Project "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\cmTC_50687.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\cmTC_50687.vcxproj" (default target) (1) ->
+        (Link target) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\janux\\RiderProjects\\crowd-sim\\out\\build\\test-build\\CMakeFiles\\CMakeScratch\\TryCompile-cuba8y\\cmTC_50687.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.24
+        
+      exitCode: 1
+...

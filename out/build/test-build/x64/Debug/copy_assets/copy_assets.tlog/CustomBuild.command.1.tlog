@@ -1,0 +1,22 @@
+^C:\USERS\JANUX\RIDERPROJECTS\CROWD-SIM\OUT\BUILD\TEST-BUILD\CMAKEFILES\E3C1619FBB42ACB448AB9704856078AC\COPY_ASSETS.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E remove_directory C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/assets
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/janux/RiderProjects/crowd-sim/assets C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\JANUX\RIDERPROJECTS\CROWD-SIM\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/janux/RiderProjects/crowd-sim -BC:/Users/janux/RiderProjects/crowd-sim/out/build/test-build --check-stamp-file C:/Users/janux/RiderProjects/crowd-sim/out/build/test-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

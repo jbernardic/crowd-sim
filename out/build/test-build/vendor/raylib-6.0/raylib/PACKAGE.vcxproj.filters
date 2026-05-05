@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\janux\RiderProjects\crowd-sim\out\build\test-build\CMakeFiles\7d74a76af73a092c66c0002e1f7c329e\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C66425AE-9590-3540-93B4-5131E07C7634}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.2/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-4.2/Templates/CPackConfig.cmake.in
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/CompileDefinitions.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/GlfwImport.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/InstallConfigurations.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/JoinPaths.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/LibraryConfigurations.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/LibraryPathToLinkerFlags.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/PackConfigurations.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/PopulateConfigVariablesLocally.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/cmake/raylib-config-version.cmake
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/raylib.pc.in
+C:/Users/janux/RiderProjects/crowd-sim/vendor/raylib-5.5/src/CMakeLists.txt
