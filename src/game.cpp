@@ -53,18 +53,6 @@ void Game::run() {
 
         const float ts = get_wall_config().tile_size;
 
-        for (const auto& [gk, ff] : get_flow_fields()) {
-            for (const auto& [tk, dir] : ff.dir) {
-                int tx, ty; decode_tile(tk, tx, ty);
-                float hue = fmodf(atan2f(dir.y, dir.x) * RAD2DEG + 360.0f, 360.0f);
-                Color c   = ColorFromHSV(hue, 0.7f, 0.8f);
-                c.a       = 120;
-                DrawRectangle(tx * (int)ts, ty * (int)ts, (int)ts, (int)ts, c);
-                float mx = tx * ts + ts * 0.5f, my = ty * ts + ts * 0.5f;
-                DrawLineV({ mx, my }, { mx + dir.x * ts * 0.45f, my + dir.y * ts * 0.45f }, { 255, 255, 255, 160 });
-            }
-        }
-
         for (const auto& key : get_wall_tiles()) {
             int tx, ty;
             decode_tile(key, tx, ty);

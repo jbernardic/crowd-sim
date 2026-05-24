@@ -5,13 +5,15 @@
 struct AgentData {
     std::vector<Vector3>  positions;
     std::vector<Vector3>  targets;
+    std::vector<Vector3>  destinations;
     std::vector<Vector3>  vel;
     std::vector<float>    arrived;
+    
+    int size() const { return static_cast<int>(positions.size()); }
 
-    int size() const { return (int)positions.size(); }
-
-    void add(Vector3 pos) {
+    void add(const Vector3& pos) {
         positions.push_back(pos);
+        destinations.push_back(pos);
         targets.push_back(pos);
         vel.push_back({ 0.0f, 0.0f, 0.0f });
         arrived.push_back(0.0f);

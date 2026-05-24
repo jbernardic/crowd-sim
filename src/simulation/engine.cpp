@@ -23,21 +23,22 @@ static AgentData make_agents() {
 static AgentData agents = make_agents();
 static std::unordered_set<uint64_t> wall_tiles;
 
-void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); pathfinding_invalidate(); }
+void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); }
 const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
 
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
     for (int i = 0; i < agents.size(); ++i) {
         if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect)) {
             agents.targets[i] = pos;
+            agents.destinations[i] = pos;
             agents.arrived[i] = 0.0f;
         }
     }
 }
 
 void sim_tick(const float dt) {
-    apply_pathfinding  (agents.positions, agents.targets, agents.arrived, wall_tiles);
-    apply_steering     (agents.positions, get_waypoints(), agents.vel);
+    apply_pathfinding (agents.positions, agents.targets, agents.destinations, wall_tiles);
+    apply_steering     (agents.positions, agents.targets, agents.vel);
     apply_avoidance    (agents.positions, agents.vel, dt);
     apply_arrival      (agents.positions, agents.targets, agents.vel, agents.arrived, dt);
     apply_separation   (agents.positions, agents.vel, dt);
