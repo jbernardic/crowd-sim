@@ -74,6 +74,8 @@ void Game::run() {
         if (selecting)
             DrawRectangleLinesEx(selection, 1.0f, { 255, 255, 255, 180 });
 
+        DrawFPS(10, 10);
+
         rlImGuiBegin();
         ui_draw();
         rlImGuiEnd();
