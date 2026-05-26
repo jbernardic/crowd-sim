@@ -8,7 +8,7 @@ struct AgentData {
     std::vector<Vector3>  destinations;
     std::vector<Vector3>  vel;
     std::vector<float>    arrived;
-    
+
     int size() const { return static_cast<int>(positions.size()); }
 
     void add(const Vector3& pos) {

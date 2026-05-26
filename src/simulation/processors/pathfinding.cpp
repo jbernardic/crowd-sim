@@ -125,6 +125,32 @@ FlowField build_field(int goalGx, int goalGy, const Grid& g,
     return f;
 }
 
+// Bilinearly blend the four surrounding cells' flow vectors so the steering
+// direction varies smoothly across the grid instead of snapping between the
+// eight quantised directions at every cell boundary (the source of the
+// movement flicker). Returns a unit vector, or {0,0} where there is no flow.
+Vector2 sample_flow(const FlowField& f, float x, float y, float ts) {
+    const float fx = x / ts - 0.5f;
+    const float fy = y / ts - 0.5f;
+    const int   x0 = (int)floorf(fx), y0 = (int)floorf(fy);
+    const float tx = fx - x0,         ty = fy - y0;
+
+    auto at = [&](int cx, int cy) -> Vector2 {
+        if (cx < 0 || cy < 0 || cx >= f.gw || cy >= f.gh) return { 0.0f, 0.0f };
+        return f.flow[cy * f.gw + cx];
+    };
+    const Vector2 v00 = at(x0, y0),     v10 = at(x0 + 1, y0);
+    const Vector2 v01 = at(x0, y0 + 1), v11 = at(x0 + 1, y0 + 1);
+
+    Vector2 a = { v00.x + (v10.x - v00.x) * tx, v00.y + (v10.y - v00.y) * tx };
+    Vector2 b = { v01.x + (v11.x - v01.x) * tx, v01.y + (v11.y - v01.y) * tx };
+    Vector2 v = { a.x + (b.x - a.x) * ty,        a.y + (b.y - a.y) * ty };
+
+    const float len = sqrtf(v.x * v.x + v.y * v.y);
+    if (len < 0.01f) return { 0.0f, 0.0f };
+    return { v.x / len, v.y / len };
+}
+
 } // namespace
 
 void apply_pathfinding(
@@ -173,8 +199,7 @@ void apply_pathfinding(
             it = g_cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
         const FlowField& f = it->second;
 
-        int cx, cy; to_cell(pos.x, pos.y, cx, cy);
-        Vector2 d = f.flow[cy * f.gw + cx];
+        Vector2 d = sample_flow(f, pos.x, pos.y, ts);
         if (d.x == 0.0f && d.y == 0.0f)
             targets[i] = dest;                                  // goal cell or no path
         else
