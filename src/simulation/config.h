@@ -40,15 +40,6 @@ struct AvoidanceConfig {
     }
 };
 
-struct SeparationConfig
-{
-    bool  enabled = true;
-    std::vector<ConfigField> fields() {
-        return {
-            ConfigBoolField{  "Enabled",            &enabled                            },
-        };
-    }
-};
 
 struct ArrivalConfig {
     bool  enabled        = true;
@@ -102,4 +93,3 @@ SteeringConfig&  get_steering_config();
 AvoidanceConfig& get_avoidance_config();
 ArrivalConfig&   get_arrival_config();
 WallConfig&      get_wall_config();
-SeparationConfig& get_seperation_config();

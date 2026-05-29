@@ -35,7 +35,6 @@ void ui_draw() {
     draw_panel("Agent",       get_agent_config().fields());
     draw_panel("Steering",  get_steering_config().fields());
     draw_panel("Avoidance", get_avoidance_config().fields());
-    draw_panel("Separation", get_seperation_config().fields());
     draw_panel("Arrival",   get_arrival_config().fields());
     draw_panel("Walls",     get_wall_config().fields());
 }

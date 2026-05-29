@@ -2,7 +2,6 @@
 #include "agent.h"
 #include "processors/steering.h"
 #include "processors/avoidance.h"
-#include "processors/separation.h"
 #include "processors/movement.h"
 #include "processors/arrival.h"
 #include "processors/walls.h"
@@ -41,7 +40,6 @@ void sim_tick(const float dt) {
     apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, wall_tiles);
     apply_steering     (agents.positions, agents.targets, agents.vel);
     apply_avoidance    (agents.positions, agents.vel, dt);
-    apply_separation   (agents.positions, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
     apply_arrival      (agents.positions, agents.destinations, agents.vel, agents.arrived, dt);
     apply_movement      (agents.positions, agents.vel, dt);
