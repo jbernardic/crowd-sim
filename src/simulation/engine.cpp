@@ -22,6 +22,7 @@ static AgentData make_agents() {
 
 static AgentData agents = make_agents();
 static std::unordered_set<uint64_t> wall_tiles;
+static PathfindingContext pf_ctx;
 
 void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); }
 const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
@@ -37,7 +38,7 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
 }
 
 void sim_tick(const float dt) {
-    apply_pathfinding (agents.positions, agents.targets, agents.destinations, wall_tiles);
+    apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, wall_tiles);
     apply_steering     (agents.positions, agents.targets, agents.vel);
     apply_avoidance    (agents.positions, agents.vel, dt);
     apply_separation   (agents.positions, agents.vel, dt);

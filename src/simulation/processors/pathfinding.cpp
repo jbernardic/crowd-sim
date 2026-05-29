@@ -19,19 +19,7 @@
 
 namespace {
 
-struct FlowField {
-    int gw = 0, gh = 0;
-    std::vector<Vector2> flow;   // per cell; {0,0} = goal or unreachable
-};
-
 struct Grid { int gw, gh; float ts; };
-
-std::unordered_map<uint64_t, FlowField> g_cache;
-uint64_t g_wall_xor   = 0;
-size_t   g_wall_count = (size_t)-1;
-float    g_built_ts   = -1.0f;
-int      g_built_w    = -1;
-int      g_built_h    = -1;
 
 const int   DX[8]    = {  1, -1,  0,  0,  1,  1, -1, -1 };
 const int   DY[8]    = {  0,  0,  1, -1,  1, -1,  1, -1 };
@@ -154,6 +142,7 @@ Vector2 sample_flow(const FlowField& f, float x, float y, float ts) {
 } // namespace
 
 void apply_pathfinding(
+    PathfindingContext&                 ctx,
     const std::vector<Vector3>&         positions,
     std::vector<Vector3>&               targets,
     const std::vector<Vector3>&         destinations,
@@ -169,11 +158,11 @@ void apply_pathfinding(
 
     uint64_t wxor = 0;
     for (uint64_t k : wall_tiles) wxor ^= k;
-    if (wxor != g_wall_xor || wall_tiles.size() != g_wall_count ||
-        ts != g_built_ts || W != g_built_w || H != g_built_h) {
-        g_cache.clear();
-        g_wall_xor = wxor; g_wall_count = wall_tiles.size();
-        g_built_ts = ts;   g_built_w = W; g_built_h = H;
+    if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count ||
+        ts != ctx.built_ts || W != ctx.built_w || H != ctx.built_h) {
+        ctx.cache.clear();
+        ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size();
+        ctx.built_ts = ts;   ctx.built_w = W; ctx.built_h = H;
     }
 
     auto to_cell = [&](float x, float y, int& cx, int& cy) {
@@ -194,9 +183,9 @@ void apply_pathfinding(
 
         int dgx, dgy; to_cell(dest.x, dest.y, dgx, dgy);
         uint64_t key = encode_tile(dgx, dgy);
-        auto it = g_cache.find(key);
-        if (it == g_cache.end())
-            it = g_cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
+        auto it = ctx.cache.find(key);
+        if (it == ctx.cache.end())
+            it = ctx.cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
         const FlowField& f = it->second;
 
         Vector2 d = sample_flow(f, pos.x, pos.y, ts);
