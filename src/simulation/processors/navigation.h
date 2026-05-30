@@ -17,15 +17,15 @@ struct FlowField {
 
 // Holds the flow-field cache and the inputs it was built for. Owned by the
 // caller and passed into apply_navigation so no pathfinding state is global.
-// Fields are dropped when the walls, tile size, or the active world region
-// (which follows the agents, not the window) change.
+// The whole cache is dropped only when the walls or tile size change (those
+// invalidate every field at once). Region drift as the agents roam does not
+// invalidate fields; individual fields are rebuilt on demand when an agent
+// leaves their window (see apply_navigation).
 struct PathfindingContext {
     std::unordered_map<uint64_t, FlowField> cache;
     uint64_t wall_xor   = 0;
     size_t   wall_count = (size_t)-1;
     float    built_ts   = -1.0f;
-    int      region_ox  = 0, region_oy = 0;
-    int      region_gw  = -1, region_gh = -1;
 };
 
 // Drives every agent's velocity toward its goal in a single step (flow-field

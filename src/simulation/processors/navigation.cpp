@@ -193,15 +193,18 @@ void apply_navigation(
         const int ey = (floordiv(maxy, CHUNK) + 1) * CHUNK;
         g = Grid{ ex - ox, ey - oy, ts, ox, oy };
 
+        // Only a change that makes EVERY field wrong wipes the whole cache: the
+        // walls moved or the tile size changed. The tracked region drifting as
+        // agents roam does NOT invalidate fields -- a field still points at its
+        // goal over its own window -- so we no longer clear on region change.
+        // Wiping + rebuilding all fields in one frame on each chunk crossing was
+        // the lag spike; fields that fall out of coverage are now rebuilt singly,
+        // on demand, in the loop below.
         uint64_t wxor = 0;
         for (uint64_t k : wall_tiles) wxor ^= k;
-        if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count || ts != ctx.built_ts ||
-            g.ox != ctx.region_ox || g.oy != ctx.region_oy ||
-            g.gw != ctx.region_gw || g.gh != ctx.region_gh) {
+        if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count || ts != ctx.built_ts) {
             ctx.cache.clear();
             ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size(); ctx.built_ts = ts;
-            ctx.region_ox = g.ox; ctx.region_oy = g.oy;
-            ctx.region_gw = g.gw; ctx.region_gh = g.gh;
         }
     }
 
@@ -236,8 +239,20 @@ void apply_navigation(
                 int dgx = (int)floorf(anchor.x / ts), dgy = (int)floorf(anchor.y / ts);
                 uint64_t key = encode_tile(dgx, dgy);
                 auto it = ctx.cache.find(key);
-                if (it == ctx.cache.end())
-                    it = ctx.cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
+
+                // Rebuild this one field only when it is missing or the agent has
+                // rolled outside its window (inset by one cell, since sample_flow
+                // reads the +1 neighbour for the bilinear blend). Re-anchored over
+                // the current region g, which always contains this goal.
+                bool stale = (it == ctx.cache.end());
+                if (!stale) {
+                    const FlowField& f = it->second;
+                    int lx = (int)floorf(pos.x / ts) - f.ox;
+                    int ly = (int)floorf(pos.y / ts) - f.oy;
+                    stale = lx < 1 || ly < 1 || lx >= f.gw - 1 || ly >= f.gh - 1;
+                }
+                if (stale)
+                    it = ctx.cache.insert_or_assign(key, build_field(dgx, dgy, g, wall_tiles)).first;
 
                 Vector2 d = sample_flow(it->second, pos.x, pos.y, ts);
                 if (d.x != 0.0f || d.y != 0.0f)

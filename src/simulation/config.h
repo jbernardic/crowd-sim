@@ -65,7 +65,7 @@ struct FormationConfig {
 
 struct WallConfig {
     bool  has_collision = true;   // gates apply_wall_collision only; walls still block pathfinding
-    float tile_size     = 20.0f;
+    float tile_size     = 40.0f;
 
     std::vector<ConfigField> fields() {
         return {
