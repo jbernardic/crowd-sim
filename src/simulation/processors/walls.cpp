@@ -9,7 +9,7 @@ void apply_wall_collision(
     float                               dt)
 {
     const auto& cfg = get_wall_config();
-    if (!cfg.enabled || tiles.empty()) return;
+    if (!cfg.has_collision || tiles.empty()) return;
 
     const float ts = cfg.tile_size;
     const float r  = get_agent_config().radius;

@@ -48,8 +48,10 @@ struct AvoidanceConfig {
     }
 };
 
+// Formation is core to group movement (every order spreads units into distinct
+// slots), so it has no on/off toggle — only tuning. The arrangement *shape* is
+// the intended modular axis (blob today; line/column/box later).
 struct FormationConfig {
-    bool  enabled       = true;
     float settle_radius = 20.0f;   // how close to a slot counts as "arrived" (also the steering ease-in radius)
     float slot_spacing  = 1.1f;    // formation slot spacing, in agent diameters
 
@@ -62,11 +64,14 @@ struct FormationConfig {
 };
 
 struct WallConfig {
-    bool  enabled   = true;
-    float tile_size = 20.0f;
+    bool  has_collision = true;   // gates apply_wall_collision only; walls still block pathfinding
+    float tile_size     = 20.0f;
 
     std::vector<ConfigField> fields() {
-        return { ConfigFloatField{ "Tile Size", &tile_size, 4.0f, 64.0f } };
+        return {
+            ConfigBoolField{  "Has Collision", &has_collision         },
+            ConfigFloatField{ "Tile Size",     &tile_size,    4.0f, 64.0f },
+        };
     }
 };
 

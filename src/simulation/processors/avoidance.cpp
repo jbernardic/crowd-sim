@@ -20,12 +20,9 @@ void apply_avoidance(
     // pushed, against settled and travelling units alike. Units still on their
     // way pass straight through the settled blob to reach their own slots.
     std::vector<char> settled(n);
-    if (get_formation_config().enabled)
-    {
-        for (int i = 0; i < n; ++i) {
-            float d = Vector3Length(targets[i] - positions[i]);
-            settled[i] = d <= settle ? 1 : 0;
-        }   
+    for (int i = 0; i < n; ++i) {
+        float d = Vector3Length(targets[i] - positions[i]);
+        settled[i] = d <= settle ? 1 : 0;
     }
 
     for (int i = 0; i < n; ++i) {

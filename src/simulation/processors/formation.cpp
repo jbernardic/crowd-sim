@@ -60,17 +60,6 @@ std::vector<Vector3> apply_formation(
     const int n = (int)members.size();
     if (n == 0) return {};
 
-    // Formation disabled: no slots, no blob — every selected agent just heads
-    // straight to the destination, with its local target and global nav goal the
-    // same point.
-    if (!cfg.enabled) {
-        for (int k = 0; k < n; ++k) {
-            targets[members[k]]  = destination;
-            nav_goal[members[k]] = destination;
-        }
-        return {};
-    }
-
     const float diameter = get_agent_config().radius * 2.0f;
     const float spacing   = cfg.slot_spacing * diameter;
     const float reach     = cfg.settle_radius;

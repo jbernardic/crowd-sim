@@ -15,9 +15,9 @@ WallConfig&        get_wall_config()        { return wall_cfg;        }
 std::vector<ConfigModule> config_modules() {
     return {
         { "Agent",       nullptr,                  agent_cfg.fields()       },
+        { "Formation",   nullptr,                  formation_cfg.fields()   },
         { "Pathfinding", &pathfinding_cfg.enabled, pathfinding_cfg.fields() },
         { "Avoidance",   &avoidance_cfg.enabled,   avoidance_cfg.fields()   },
-        { "Formation",   &formation_cfg.enabled,   formation_cfg.fields()   },
-        { "Walls",       &wall_cfg.enabled,        wall_cfg.fields()        },
+        { "Walls",       nullptr,                  wall_cfg.fields()        },
     };
 }
