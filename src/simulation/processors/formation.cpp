@@ -48,7 +48,7 @@ std::vector<Vector3> build_blob_slots(const Vector3& front, const Vector3& back,
 
 } // namespace
 
-std::vector<Vector3> apply_formation(
+void apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       nav_goal,
@@ -58,7 +58,7 @@ std::vector<Vector3> apply_formation(
     const auto& cfg = get_formation_config();
 
     const int n = (int)members.size();
-    if (n == 0) return {};
+    if (n == 0) return;
 
     const float diameter = get_agent_config().radius * 2.0f;
     const float spacing   = cfg.slot_spacing * diameter;
@@ -135,6 +135,4 @@ std::vector<Vector3> apply_formation(
         targets[i]  = slot;
         nav_goal[i] = anchor;
     }
-
-    return slots;
 }

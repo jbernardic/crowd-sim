@@ -23,7 +23,7 @@
 // inside the blob steers each agent to its individual slot.
 //
 // Returns the slot positions (slot 0 first), so callers can visualise them.
-std::vector<Vector3> apply_formation(
+void apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       nav_goal,
