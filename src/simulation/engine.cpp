@@ -21,7 +21,7 @@ static AgentData make_agents() {
 static AgentData agents = make_agents();
 static std::unordered_set<uint64_t> wall_tiles;
 static PathfindingContext pf_ctx;
-static std::vector<Vector3> formation_slots;
+static FormationOrder formation_order;
 
 void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); }
 const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
@@ -32,15 +32,14 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
         if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect))
             members.push_back(i);
 
-    formation_slots = apply_formation(agents.positions, agents.targets,
-                                      agents.nav_goal, members, pos);
+    assign_goals(agents.positions, agents.targets,
+                 agents.nav_goal, members, pos, formation_order);
 }
-
-const std::vector<Vector3>& get_formation_slots() { return formation_slots; }
 
 void spawn_agent(const Vector3& pos) { agents.add(pos); }
 
 void sim_tick(const float dt) {
+    apply_formation     (agents.positions, agents.targets, formation_order);
     apply_navigation   (pf_ctx, agents.positions, agents.nav_goal, agents.targets, agents.vel, wall_tiles);
     apply_avoidance    (agents.positions, agents.targets, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
