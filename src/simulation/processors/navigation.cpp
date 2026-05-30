@@ -151,11 +151,9 @@ void apply_navigation(
 {
     std::fill(vel.begin(), vel.end(), Vector3{ 0.0f, 0.0f, 0.0f });
 
-    const auto& scfg = get_steering_config();
-    if (!scfg.enabled) return;
-
+    const float max_speed   = get_agent_config().speed;
     const bool  use_field   = get_pathfinding_config().enabled;
-    const float slow_radius = get_arrival_config().arrival_radius;
+    const float slow_radius = get_formation_config().settle_radius;
 
     int   W  = GetScreenWidth();  if (W <= 0) W = 1280;
     int   H  = GetScreenHeight(); if (H <= 0) H = 720;
@@ -221,8 +219,8 @@ void apply_navigation(
         float dx = steer.x - pos.x, dy = steer.y - pos.y;
         float dist = sqrtf(dx * dx + dy * dy);
         if (dist < 1.0f) continue;
-        float speed = (dist < slow_radius) ? scfg.speed * (dist / slow_radius)
-                                           : scfg.speed;
+        float speed = (dist < slow_radius) ? max_speed * (dist / slow_radius)
+                                           : max_speed;
         vel[i] = { dx / dist * speed, dy / dist * speed, 0.0f };
     }
 }

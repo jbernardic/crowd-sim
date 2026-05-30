@@ -12,7 +12,7 @@ void apply_wall_collision(
     if (!cfg.enabled || tiles.empty()) return;
 
     const float ts = cfg.tile_size;
-    const float r  = cfg.agent_radius;
+    const float r  = get_agent_config().radius;
 
     for (int i = 0; i < (int)positions.size(); ++i) {
         float px = positions[i].x + vel[i].x * dt;

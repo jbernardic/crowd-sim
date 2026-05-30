@@ -5,21 +5,35 @@
 static constexpr float panel_width   = 300.0f;
 static constexpr float panel_padding = 20.0f;
 
-static void draw_section(const char* title, std::vector<ConfigField> fields) {
-    if (ImGui::CollapsingHeader(title, ImGuiTreeNodeFlags_DefaultOpen)) {
-        ImGui::PushID(title);
-        for (auto& field : fields) {
-            std::visit([](auto& f) {
-                using T = std::decay_t<decltype(f)>;
-                if constexpr (std::is_same_v<T, ConfigFloatField>)
-                    ImGui::SliderFloat(f.name, f.value, f.min, f.max);
-                else if constexpr (std::is_same_v<T, ConfigBoolField>)
-                    ImGui::Checkbox(f.name, f.value);
-            }, field);
-        }
-        ImGui::PopID();
-        ImGui::Spacing();
-    }
+static void draw_field(ConfigField& field) {
+    std::visit([](auto& f) {
+        using T = std::decay_t<decltype(f)>;
+        if constexpr (std::is_same_v<T, ConfigFloatField>)
+            ImGui::SliderFloat(f.name, f.value, f.min, f.max);
+        else if constexpr (std::is_same_v<T, ConfigBoolField>)
+            ImGui::Checkbox(f.name, f.value);
+    }, field);
+}
+
+static void draw_module(ConfigModule& mod) {
+    if (!ImGui::CollapsingHeader(mod.name, ImGuiTreeNodeFlags_DefaultOpen))
+        return;
+
+    ImGui::PushID(mod.name);
+
+    // On/off toggle for switchable features; tuning-only modules skip it.
+    if (mod.enabled)
+        ImGui::Checkbox("Enabled", mod.enabled);
+
+    // Grey out the tunables while the feature is switched off.
+    const bool off = mod.enabled && !*mod.enabled;
+    if (off) ImGui::BeginDisabled();
+    for (auto& field : mod.fields)
+        draw_field(field);
+    if (off) ImGui::EndDisabled();
+
+    ImGui::PopID();
+    ImGui::Spacing();
 }
 
 void ui_draw() {
@@ -42,12 +56,8 @@ void ui_draw() {
     ImGui::Separator();
     ImGui::Spacing();
 
-    draw_section("Pathfinding", get_pathfinding_config().fields());
-    draw_section("Agent",       get_agent_config().fields());
-    draw_section("Steering",    get_steering_config().fields());
-    draw_section("Avoidance",   get_avoidance_config().fields());
-    draw_section("Settling",    get_arrival_config().fields());
-    draw_section("Walls",       get_wall_config().fields());
+    for (auto& mod : config_modules())
+        draw_module(mod);
 
     ImGui::End();
 }

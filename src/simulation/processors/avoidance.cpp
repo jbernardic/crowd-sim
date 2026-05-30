@@ -10,8 +10,8 @@ void apply_avoidance(
 {
     const auto& cfg = get_avoidance_config();
     if (!cfg.enabled) return;
-    const float diameter = get_agent_config().agent_radius * 2.0f;
-    const float settle   = get_arrival_config().arrival_radius;
+    const float diameter = get_agent_config().radius * 2.0f;
+    const float settle   = get_formation_config().settle_radius;
 
     const int n = (int)positions.size();
 
@@ -20,9 +20,12 @@ void apply_avoidance(
     // pushed, against settled and travelling units alike. Units still on their
     // way pass straight through the settled blob to reach their own slots.
     std::vector<char> settled(n);
-    for (int i = 0; i < n; ++i) {
-        float d = Vector3Length(targets[i] - positions[i]);
-        settled[i] = (d <= settle) ? 1 : 0;
+    if (get_formation_config().enabled)
+    {
+        for (int i = 0; i < n; ++i) {
+            float d = Vector3Length(targets[i] - positions[i]);
+            settled[i] = d <= settle ? 1 : 0;
+        }   
     }
 
     for (int i = 0; i < n; ++i) {
@@ -36,7 +39,7 @@ void apply_avoidance(
             if (dist < 0.001f) { diff = { 1.0f, 0.0f, 0.0f }; dist = 0.001f; }
             if (dist >= diameter) continue;
             const float overlap = diameter - dist;
-            const Vector3 push = Vector3Scale(Vector3Normalize(diff), cfg.avoidance_strength * (overlap / diameter));
+            const Vector3 push = Vector3Scale(Vector3Normalize(diff), cfg.strength * (overlap / diameter));
             vel[i] += push;
             vel[j] -= push;
         }
