@@ -52,6 +52,8 @@ add_executable(crowd-sim
         src/simulation/config.cpp
 src/simulation/processors/pathfinding.cpp
         src/simulation/processors/pathfinding.h
+        src/simulation/processors/formation.cpp
+        src/simulation/processors/formation.h
 )
 target_link_libraries(crowd-sim PRIVATE raylib rlimgui imgui)
 target_include_directories(crowd-sim PRIVATE

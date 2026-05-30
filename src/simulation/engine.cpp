@@ -6,6 +6,7 @@
 #include "processors/arrival.h"
 #include "processors/walls.h"
 #include "processors/pathfinding.h"
+#include "processors/formation.h"
 #include <unordered_set>
 
 static AgentData make_agents() {
@@ -22,19 +23,23 @@ static AgentData make_agents() {
 static AgentData agents = make_agents();
 static std::unordered_set<uint64_t> wall_tiles;
 static PathfindingContext pf_ctx;
+static std::vector<Vector3> formation_slots;
 
 void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); }
 const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
 
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
-    for (int i = 0; i < agents.size(); ++i) {
-        if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect)) {
-            agents.targets[i] = pos;
-            agents.destinations[i] = pos;
-            agents.arrived[i] = 0.0f;
-        }
-    }
+    std::vector<int> members;
+    for (int i = 0; i < agents.size(); ++i)
+        if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect))
+            members.push_back(i);
+
+    formation_slots = apply_formation(agents.positions, agents.targets,
+                                      agents.destinations, agents.arrived,
+                                      members, pos);
 }
+
+const std::vector<Vector3>& get_formation_slots() { return formation_slots; }
 
 void sim_tick(const float dt) {
     apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, wall_tiles);

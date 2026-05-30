@@ -11,6 +11,7 @@ const std::vector<Vector3>& get_agent_positions();
 const std::vector<Vector3>& get_agent_targets();
 const std::vector<float>&   get_agent_arrived();
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos);
+const std::vector<Vector3>& get_formation_slots();
 
 void add_wall_tile(int x, int y);
 const std::unordered_set<uint64_t>& get_wall_tiles();
