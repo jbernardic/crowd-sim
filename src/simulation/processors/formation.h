@@ -21,6 +21,5 @@ std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       destinations,
-    std::vector<float>&         arrived,
     const std::vector<int>&     members,
     const Vector3&              destination);

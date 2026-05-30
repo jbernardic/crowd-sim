@@ -46,7 +46,7 @@ void ui_draw() {
     draw_section("Agent",       get_agent_config().fields());
     draw_section("Steering",    get_steering_config().fields());
     draw_section("Avoidance",   get_avoidance_config().fields());
-    draw_section("Arrival",     get_arrival_config().fields());
+    draw_section("Settling",    get_arrival_config().fields());
     draw_section("Walls",       get_wall_config().fields());
 
     ImGui::End();

@@ -45,8 +45,6 @@ add_executable(crowd-sim
         src/simulation/processors/movement.cpp
         src/simulation/processors/avoidance.h
         src/simulation/processors/avoidance.cpp
-        src/simulation/processors/arrival.cpp
-        src/simulation/processors/arrival.h
         src/simulation/processors/walls.cpp
         src/simulation/processors/walls.h
         src/simulation/config.cpp

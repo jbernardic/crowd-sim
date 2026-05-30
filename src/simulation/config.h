@@ -41,16 +41,16 @@ struct AvoidanceConfig {
 };
 
 
+// Settling / formation packing parameters. (There is no longer an arrival
+// processor; a unit settles simply by easing to a stop on its slot in steering.)
 struct ArrivalConfig {
-    bool  enabled        = true;
-    float arrival_radius = 20.0f;
-    float stop_spacing   = 1.1f;
+    float arrival_radius = 20.0f;   // how close counts as "in the slot" / slow radius
+    float stop_spacing   = 1.1f;    // slot spacing as a multiple of agent diameter
 
     std::vector<ConfigField> fields() {
         return {
-            ConfigBoolField{  "Enabled",        &enabled                        },
-            ConfigFloatField{ "Arrival Radius",  &arrival_radius, 1.0f,  50.0f },
-            ConfigFloatField{ "Stop Spacing",    &stop_spacing,   0.5f,   2.0f },
+            ConfigFloatField{ "Settle Radius", &arrival_radius, 1.0f,  50.0f },
+            ConfigFloatField{ "Slot Spacing",  &stop_spacing,   0.5f,   2.0f },
         };
     }
 };

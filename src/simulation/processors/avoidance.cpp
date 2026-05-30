@@ -4,14 +4,31 @@
 
 void apply_avoidance(
     const std::vector<Vector3>& positions,
+    const std::vector<Vector3>& destinations,
     std::vector<Vector3>&       vel,
     float                       dt)
 {
     const auto& cfg = get_avoidance_config();
     if (!cfg.enabled) return;
     const float diameter = get_agent_config().agent_radius * 2.0f;
-    for (int i = 0; i < (int)positions.size(); ++i) {
-        for (int j = i + 1; j < (int)positions.size(); ++j) {
+    const float settle   = get_arrival_config().arrival_radius;
+
+    const int n = (int)positions.size();
+
+    // A unit that has reached its slot (within the settle radius — the same test
+    // that draws it green) is fully non-colliding: it neither pushes nor is
+    // pushed, against settled and travelling units alike. Units still on their
+    // way pass straight through the settled blob to reach their own slots.
+    std::vector<char> settled(n);
+    for (int i = 0; i < n; ++i) {
+        float d = Vector3Length(destinations[i] - positions[i]);
+        settled[i] = (d <= settle) ? 1 : 0;
+    }
+
+    for (int i = 0; i < n; ++i) {
+        if (settled[i]) continue;
+        for (int j = i + 1; j < n; ++j) {
+            if (settled[j]) continue;
             Vector3 pi   = positions[i] + Vector3Scale(vel[i], dt);
             Vector3 pj   = positions[j] + Vector3Scale(vel[j], dt);
             Vector3 diff = pi - pj;

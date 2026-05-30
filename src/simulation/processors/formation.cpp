@@ -52,7 +52,6 @@ std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       destinations,
-    std::vector<float>&         arrived,
     const std::vector<int>&     members,
     const Vector3&              destination)
 {
@@ -63,8 +62,6 @@ std::vector<Vector3> apply_formation(
     const float spacing   = get_arrival_config().stop_spacing * diameter;
     const float reach     = get_arrival_config().arrival_radius;
 
-    // "Back" points from the destination toward the crowd's centre, so the blob
-    // grows backward along the approach instead of overshooting the goal.
     Vector3 centroid = { 0.0f, 0.0f, 0.0f };
     for (int k = 0; k < n; ++k) centroid = centroid + positions[members[k]];
     centroid = Vector3Scale(centroid, 1.0f / n);
@@ -75,31 +72,61 @@ std::vector<Vector3> apply_formation(
 
     const std::vector<Vector3> slots = build_blob_slots(destination, back, spacing, n);
 
-    // Greedy centre-out assignment: for each slot (nearest the destination
-    // first) grab the closest member not yet placed. Slot 0 is the destination,
-    // so the agent nearest the destination is the one that ends up standing on
-    // it.
+    // FIX: Use Squared Distance to penalize overtakes and line intersections
+    auto dist_sq = [&](int k, int s) {
+        return Vector3LengthSqr(positions[members[k]] - slots[s]);
+    };
+
+    std::vector<int>  slot_member(n, -1);
     std::vector<char> taken(n, 0);
-    for (const Vector3& slot : slots) {
-        int   best = -1;
+
+    // 1. FRONT-TO-BACK GREEDY INITIALIZATION (Using squared distance)
+    for (int s = 0; s < n; ++s) {
+        int best_k = -1;
         float best_d = 0.0f;
         for (int k = 0; k < n; ++k) {
             if (taken[k]) continue;
-            float d = Vector3LengthSqr(positions[members[k]] - slot);
-            if (best == -1 || d < best_d) { best = k; best_d = d; }
+            float d = dist_sq(k, s);
+            if (best_k == -1 || d < best_d) { 
+                best_d = d; 
+                best_k = k; 
+            }
         }
-        taken[best] = 1;
+        slot_member[s] = best_k;
+        taken[best_k] = 1;
+    }
 
-        const int i = members[best];
+    // 2. UNTANGLE CROSSINGS & OVERTAKES (2-OPT with squared distance)
+    for (bool improved = true; improved; ) {
+        improved = false;
+        for (int a = 0; a < n; ++a) {
+            for (int b = a + 1; b < n; ++b) {
+                int ka = slot_member[a], kb = slot_member[b];
+                float cur = dist_sq(ka, a) + dist_sq(kb, b);
+                float swp = dist_sq(ka, b) + dist_sq(kb, a);
+                
+                // If swapping reduces the sum of squared distances, they were crossed
+                if (swp + 1e-4f < cur) {
+                    slot_member[a] = kb;
+                    slot_member[b] = ka;
+                    improved = true;
+                }
+            }
+        }
+    }
 
-        // Already standing on this slot — leave it be.
-        if (Vector3Length(positions[i] - slot) <= reach) continue;
+    // 3. APPLY DESTINATIONS
+    for (int s = 0; s < n; ++s) {
+        const Vector3& slot = slots[s];
+        const int i = members[slot_member[s]];
+
+        // Need standard linear distance for the arrival check
+        if (Vector3Distance(positions[i], slot) <= reach) continue;
 
         const bool target_was_dest =
-            Vector3Length(targets[i] - destinations[i]) <= 0.1f;
+            Vector3Distance(targets[i], destinations[i]) <= 0.1f;
 
         destinations[i] = slot;
-        arrived[i]      = 0.0f;
         if (target_was_dest) targets[i] = slot;
     }
 

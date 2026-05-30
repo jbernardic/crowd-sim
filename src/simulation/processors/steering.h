@@ -5,5 +5,4 @@
 void apply_steering(
     const std::vector<Vector3>& positions,
     const std::vector<Vector3>& targets,
-    std::vector<Vector3>&       vel,
-    const std::vector<float>&   arrived);
+    std::vector<Vector3>&       vel);
