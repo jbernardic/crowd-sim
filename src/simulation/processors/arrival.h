@@ -4,7 +4,5 @@
 
 void apply_arrival(
     const std::vector<Vector3>& positions,
-    const std::vector<Vector3>& targets,
-    std::vector<Vector3>&       vel,
-    std::vector<float>&         arrived,
-    float                       dt);
+    const std::vector<Vector3>& destinations,
+    std::vector<float>&         arrived);

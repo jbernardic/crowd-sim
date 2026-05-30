@@ -44,13 +44,13 @@ struct AvoidanceConfig {
 struct ArrivalConfig {
     bool  enabled        = true;
     float arrival_radius = 20.0f;
-    float bump_delay     = 0.3f;
+    float stop_spacing   = 1.1f;
 
     std::vector<ConfigField> fields() {
         return {
             ConfigBoolField{  "Enabled",        &enabled                        },
             ConfigFloatField{ "Arrival Radius",  &arrival_radius, 1.0f,  50.0f },
-            ConfigFloatField{ "Bump Delay",      &bump_delay,     0.0f,   3.0f },
+            ConfigFloatField{ "Stop Spacing",    &stop_spacing,   0.5f,   2.0f },
         };
     }
 };
