@@ -205,9 +205,16 @@ void apply_navigation(
         }
     }
 
+    // Once every agent has settled onto its slot the fields are no longer
+    // steering anyone, so the cache is just stale memory; drop it below.
+    bool all_settled = true;
+
     for (int i = 0; i < n; ++i) {
         const Vector3 pos  = positions[i];
         const Vector3 slot = targets[i];   // local goal
+
+        const float sdx = slot.x - pos.x, sdy = slot.y - pos.y;
+        if (sdx * sdx + sdy * sdy > slow_radius * slow_radius) all_settled = false;
 
         // The point we steer toward this tick. Default: straight to the slot.
         Vector3 steer = slot;
@@ -248,4 +255,9 @@ void apply_navigation(
                                            : max_speed;
         vel[i] = { dx / dist * speed, dy / dist * speed, 0.0f };
     }
+
+    // All agents are sitting on their slots: free the fields. If one later drifts
+    // off, build_field rebuilds its goal's field lazily on the next tick.
+    if (use_field && all_settled && !ctx.cache.empty())
+        ctx.cache.clear();
 }
