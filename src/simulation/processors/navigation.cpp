@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include <algorithm>
 #include <cmath>
+#include <climits>
 #include <vector>
 #include <queue>
 #include <unordered_map>
@@ -19,33 +20,37 @@
 
 namespace {
 
-struct Grid { int gw, gh; float ts; };
+// A rectangular window of the world grid: gw x gh cells of size ts, with local
+// cell (0,0) anchored at world cell (ox, oy).
+struct Grid { int gw, gh; float ts; int ox, oy; };
 
 const int   DX[8]    = {  1, -1,  0,  0,  1,  1, -1, -1 };
 const int   DY[8]    = {  0,  0,  1, -1,  1, -1,  1, -1 };
 const float DCOST[8] = {  1, 1, 1, 1, 1.4142136f, 1.4142136f, 1.4142136f, 1.4142136f };
 
-bool cell_blocked(int gx, int gy, float ts, const std::unordered_set<uint64_t>& walls) {
+bool cell_blocked(int gx, int gy, const Grid& g, const std::unordered_set<uint64_t>& walls) {
     const float wts = get_wall_config().tile_size;
-    int wtx = (int)floorf(((gx + 0.5f) * ts) / wts);
-    int wty = (int)floorf(((gy + 0.5f) * ts) / wts);
+    int wtx = (int)floorf((((gx + g.ox) + 0.5f) * g.ts) / wts);
+    int wty = (int)floorf((((gy + g.oy) + 0.5f) * g.ts) / wts);
     return walls.count(encode_tile(wtx, wty)) != 0;
 }
 
-FlowField build_field(int goalGx, int goalGy, const Grid& g,
+// goalWx/goalWy are world cell coordinates; the field is built over `g`'s window.
+FlowField build_field(int goalWx, int goalWy, const Grid& g,
                       const std::unordered_set<uint64_t>& walls) {
     const int gw = g.gw, gh = g.gh, n = gw * gh;
     FlowField f;
-    f.gw = gw; f.gh = gh;
+    f.gw = gw; f.gh = gh; f.ox = g.ox; f.oy = g.oy;
     f.flow.assign(n, { 0.0f, 0.0f });
 
+    const int goalGx = goalWx - g.ox, goalGy = goalWy - g.oy;   // world -> local
     auto inb = [&](int x, int y) { return x >= 0 && y >= 0 && x < gw && y < gh; };
     if (!inb(goalGx, goalGy)) return f;
 
     std::vector<uint8_t> blocked(n, 0);
     for (int y = 0; y < gh; ++y)
         for (int x = 0; x < gw; ++x)
-            blocked[y * gw + x] = cell_blocked(x, y, g.ts, walls) ? 1 : 0;
+            blocked[y * gw + x] = cell_blocked(x, y, g, walls) ? 1 : 0;
 
     // Extra cost on cells next to a wall so paths keep their distance.
     const float wall_pen = get_pathfinding_config().wall_proximity_penalty;
@@ -118,8 +123,8 @@ FlowField build_field(int goalGx, int goalGy, const Grid& g,
 // eight quantised directions at every cell boundary (the source of the
 // movement flicker). Returns a unit vector, or {0,0} where there is no flow.
 Vector2 sample_flow(const FlowField& f, float x, float y, float ts) {
-    const float fx = x / ts - 0.5f;
-    const float fy = y / ts - 0.5f;
+    const float fx = x / ts - 0.5f - f.ox;   // world -> local (fractional) cell
+    const float fy = y / ts - 0.5f - f.oy;
     const int   x0 = (int)floorf(fx), y0 = (int)floorf(fy);
     const float tx = fx - x0,         ty = fy - y0;
 
@@ -151,37 +156,56 @@ void apply_navigation(
 {
     std::fill(vel.begin(), vel.end(), Vector3{ 0.0f, 0.0f, 0.0f });
 
+    const int   n           = (int)positions.size();
     const float max_speed   = get_agent_config().speed;
     const bool  use_field   = get_pathfinding_config().enabled;
     const float slow_radius = get_formation_config().settle_radius;
 
-    int   W  = GetScreenWidth();  if (W <= 0) W = 1280;
-    int   H  = GetScreenHeight(); if (H <= 0) H = 720;
     float ts = get_pathfinding_config().tile_size; if (ts < 1.0f) ts = 1.0f;
-    Grid  g{ (int)ceilf(W / ts), (int)ceilf(H / ts), ts };
 
     // Aim the moving carrot a little past the slot radius so following the field
     // never reads as "settled".
     const float lookahead = slow_radius + ts;
 
-    if (use_field) {
+    // Build the pathfinding window around wherever the agents actually are, so it
+    // tracks the action across an unbounded world instead of being pinned to the
+    // window. The region is the world-cell bounding box of every agent and its
+    // nav goal, padded and snapped to chunks so it only changes occasionally.
+    Grid g{ 0, 0, ts, 0, 0 };
+    if (use_field && n > 0) {
+        constexpr int MARGIN = 16;   // cells of slack around the agents
+        constexpr int CHUNK  = 64;   // snap bounds to chunks so rebuilds are rare
+        auto floordiv = [](int a, int b) { int q = a / b; if ((a % b) != 0 && ((a < 0) != (b < 0))) --q; return q; };
+        auto cell     = [&](float v) { return (int)floorf(v / ts); };
+
+        int minx = INT_MAX, miny = INT_MAX, maxx = INT_MIN, maxy = INT_MIN;
+        for (int i = 0; i < n; ++i) {
+            for (const Vector3& p : { positions[i], nav_goal[i] }) {
+                int cx = cell(p.x), cy = cell(p.y);
+                if (cx < minx) minx = cx;  if (cy < miny) miny = cy;
+                if (cx > maxx) maxx = cx;  if (cy > maxy) maxy = cy;
+            }
+        }
+        minx -= MARGIN; miny -= MARGIN; maxx += MARGIN; maxy += MARGIN;
+        const int ox = floordiv(minx, CHUNK) * CHUNK;
+        const int oy = floordiv(miny, CHUNK) * CHUNK;
+        const int ex = (floordiv(maxx, CHUNK) + 1) * CHUNK;
+        const int ey = (floordiv(maxy, CHUNK) + 1) * CHUNK;
+        g = Grid{ ex - ox, ey - oy, ts, ox, oy };
+
         uint64_t wxor = 0;
         for (uint64_t k : wall_tiles) wxor ^= k;
-        if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count ||
-            ts != ctx.built_ts || W != ctx.built_w || H != ctx.built_h) {
+        if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count || ts != ctx.built_ts ||
+            g.ox != ctx.region_ox || g.oy != ctx.region_oy ||
+            g.gw != ctx.region_gw || g.gh != ctx.region_gh) {
             ctx.cache.clear();
-            ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size();
-            ctx.built_ts = ts;   ctx.built_w = W; ctx.built_h = H;
+            ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size(); ctx.built_ts = ts;
+            ctx.region_ox = g.ox; ctx.region_oy = g.oy;
+            ctx.region_gw = g.gw; ctx.region_gh = g.gh;
         }
     }
 
-    auto to_cell = [&](float x, float y, int& cx, int& cy) {
-        cx = (int)floorf(x / ts); cy = (int)floorf(y / ts);
-        if (cx < 0) cx = 0; else if (cx >= g.gw) cx = g.gw - 1;
-        if (cy < 0) cy = 0; else if (cy >= g.gh) cy = g.gh - 1;
-    };
-
-    for (int i = 0; i < (int)positions.size(); ++i) {
+    for (int i = 0; i < n; ++i) {
         const Vector3 pos  = positions[i];
         const Vector3 slot = targets[i];   // local goal
 
@@ -199,9 +223,10 @@ void apply_navigation(
             const float blob_r = sqrtf(bx * bx + by * by);
             const float ax = anchor.x - pos.x, ay = anchor.y - pos.y;
             if (sqrtf(ax * ax + ay * ay) > blob_r + lookahead) {
-                // Follow the shared field toward the anchor cell. Every member of
-                // a formation shares this cell, so the field is built/cached once.
-                int dgx, dgy; to_cell(anchor.x, anchor.y, dgx, dgy);
+                // Follow the shared field toward the anchor's world cell. Every
+                // member of a formation shares this cell, so it is built/cached
+                // once. The cell is inside the region (nav goals are in its bbox).
+                int dgx = (int)floorf(anchor.x / ts), dgy = (int)floorf(anchor.y / ts);
                 uint64_t key = encode_tile(dgx, dgy);
                 auto it = ctx.cache.find(key);
                 if (it == ctx.cache.end())

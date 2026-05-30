@@ -19,14 +19,45 @@ void Game::run() {
     SetTargetFPS(60);
     rlImGuiSetup(true);
 
+    // World-space camera. At zoom 1 with target == offset the world maps 1:1 to
+    // the screen, matching the original (camera-less) view. The mouse wheel zooms
+    // toward the cursor with no lower bound, so the world can be zoomed out
+    // indefinitely; WASD / arrows pan.
+    Camera2D camera = {};
+    camera.offset = { 640.0f, 360.0f };
+    camera.target = { 640.0f, 360.0f };
+    camera.zoom   = 1.0f;
+
     Vector2 sel_start = {};
     bool selecting = false;
     Rectangle selection = {};
 
     while (!WindowShouldClose()) {
-        Vector2 mouse = GetMousePosition();
+        const bool    over_ui      = ImGui::GetIO().WantCaptureMouse;
+        const Vector2 screen_mouse = GetMousePosition();
 
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        // --- Camera control ---
+        float wheel = GetMouseWheelMove();
+        if (wheel != 0.0f && !over_ui) {
+            // Keep the world point under the cursor fixed while zooming.
+            Vector2 world_before = GetScreenToWorld2D(screen_mouse, camera);
+            camera.offset = screen_mouse;
+            camera.target = world_before;
+            camera.zoom  *= (wheel > 0.0f) ? 1.1f : 1.0f / 1.1f;
+            if (camera.zoom < 0.0001f) camera.zoom = 0.0001f;
+        }
+        // Pan faster the further out we are, so it feels constant on screen.
+        const float pan = 600.0f * GetFrameTime() / camera.zoom;
+        if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))  camera.target.x -= pan;
+        if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) camera.target.x += pan;
+        if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP))    camera.target.y -= pan;
+        if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN))  camera.target.y += pan;
+
+        // Everything below works in world space.
+        const Vector2 mouse = GetScreenToWorld2D(screen_mouse, camera);
+
+        // --- Input (ignored while the pointer is over the config panel) ---
+        if (!over_ui && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
             sel_start = mouse;
             selecting = true;
         }
@@ -35,20 +66,22 @@ void Game::run() {
         if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
             selecting = false;
 
-        if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+        if (!over_ui && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
             set_target_in_rect(selection, { mouse.x, mouse.y, 0.0f });
             selection = {};
         }
 
-        if (IsMouseButtonDown(MOUSE_BUTTON_MIDDLE)) {
+        if (!over_ui && IsMouseButtonDown(MOUSE_BUTTON_MIDDLE)) {
             const float ts = get_wall_config().tile_size;
-            add_wall_tile((int)(mouse.x / ts), (int)(mouse.y / ts));
+            add_wall_tile((int)floorf(mouse.x / ts), (int)floorf(mouse.y / ts));
         }
 
         sim_tick(GetFrameTime());
 
         BeginDrawing();
         ClearBackground(DARKGRAY);
+
+        BeginMode2D(camera);
 
         const float ts = get_wall_config().tile_size;
 
@@ -85,7 +118,9 @@ void Game::run() {
             DrawCircleLines((int)slots[0].x, (int)slots[0].y, get_agent_config().radius, SKYBLUE);
 
         if (selecting)
-            DrawRectangleLinesEx(selection, 1.0f, { 255, 255, 255, 180 });
+            DrawRectangleLinesEx(selection, 1.0f / camera.zoom, { 255, 255, 255, 180 });
+
+        EndMode2D();
 
         DrawFPS(10, 10);
 

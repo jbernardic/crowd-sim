@@ -6,21 +6,26 @@
 #include <cstdint>
 #include <cstddef>
 
-// One cached flow field: per-cell unit vectors pointing toward a goal.
+// One cached flow field: per-cell unit vectors pointing toward a goal. The field
+// covers an arbitrary rectangle of the (unbounded) world grid: local cell (0,0)
+// sits at world cell (ox, oy), so the field is not tied to the window.
 struct FlowField {
-    int gw = 0, gh = 0;
+    int gw = 0, gh = 0;          // local grid dimensions
+    int ox = 0, oy = 0;          // world cell of local cell (0,0)
     std::vector<Vector2> flow;   // per cell; {0,0} = goal or unreachable
 };
 
 // Holds the flow-field cache and the inputs it was built for. Owned by the
 // caller and passed into apply_navigation so no pathfinding state is global.
+// Fields are dropped when the walls, tile size, or the active world region
+// (which follows the agents, not the window) change.
 struct PathfindingContext {
     std::unordered_map<uint64_t, FlowField> cache;
     uint64_t wall_xor   = 0;
     size_t   wall_count = (size_t)-1;
     float    built_ts   = -1.0f;
-    int      built_w    = -1;
-    int      built_h    = -1;
+    int      region_ox  = 0, region_oy = 0;
+    int      region_gw  = -1, region_gh = -1;
 };
 
 // Drives every agent's velocity toward its goal in a single step (flow-field
