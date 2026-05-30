@@ -38,11 +38,22 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
 
 const std::vector<Vector3>& get_formation_slots() { return formation_slots; }
 
+void spawn_agent(const Vector3& pos) { agents.add(pos); }
+
 void sim_tick(const float dt) {
     apply_navigation   (pf_ctx, agents.positions, agents.nav_goal, agents.targets, agents.vel, wall_tiles);
     apply_avoidance    (agents.positions, agents.targets, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
     apply_movement      (agents.positions, agents.vel, dt);
+}
+
+int get_flow_field_count() { return (int)pf_ctx.cache.size(); }
+
+size_t get_flow_field_bytes() {
+    size_t bytes = 0;
+    for (const auto& [key, field] : pf_ctx.cache)
+        bytes += field.flow.capacity() * sizeof(Vector2);
+    return bytes;
 }
 
 const std::vector<Vector3>& get_agent_positions() { return agents.positions; }

@@ -57,9 +57,12 @@ void Game::run() {
         const Vector2 mouse = GetScreenToWorld2D(screen_mouse, camera);
 
         // --- Input (ignored while the pointer is over the config panel) ---
+        const bool shift = IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT);
         if (!over_ui && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-            sel_start = mouse;
-            selecting = true;
+            if (!shift) {
+                sel_start = mouse;
+                selecting = true;
+            }
         }
         if (selecting)
             selection = make_rect(sel_start, mouse);
@@ -74,6 +77,10 @@ void Game::run() {
         if (!over_ui && IsMouseButtonDown(MOUSE_BUTTON_MIDDLE)) {
             const float ts = get_wall_config().tile_size;
             add_wall_tile((int)floorf(mouse.x / ts), (int)floorf(mouse.y / ts));
+        }
+        if (!over_ui && IsMouseButtonDown(MOUSE_BUTTON_LEFT) && shift)
+        {
+            spawn_agent({ mouse.x, mouse.y, 0.0f });
         }
 
         sim_tick(GetFrameTime());
@@ -123,6 +130,10 @@ void Game::run() {
         EndMode2D();
 
         DrawFPS(10, 10);
+        DrawText(TextFormat("Flow fields: %d   %.2f MB",
+                            get_flow_field_count(),
+                            get_flow_field_bytes() / (1024.0f * 1024.0f)),
+                 10, 34, 20, RAYWHITE);
 
         rlImGuiBegin();
         ui_draw();
