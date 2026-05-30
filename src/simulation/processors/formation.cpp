@@ -48,23 +48,21 @@ std::vector<Vector3> build_blob_slots(const Vector3& front, const Vector3& back,
 
 } // namespace
 
-void assign_goals(
+std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       nav_goal,
     const std::vector<int>&     members,
-    const Vector3&              destination,
-    FormationOrder&             order)
+    const Vector3&              destination)
 {
     const auto& cfg = get_formation_config();
 
     const int n = (int)members.size();
-    order.members.clear();
-    order.slots.clear();
-    if (n == 0) return;
+    if (n == 0) return {};
 
     const float diameter = get_agent_config().radius * 2.0f;
     const float spacing   = cfg.slot_spacing * diameter;
+    const float reach     = cfg.settle_radius;
 
     Vector3 centroid = { 0.0f, 0.0f, 0.0f };
     for (int k = 0; k < n; ++k) centroid = centroid + positions[members[k]];
@@ -126,39 +124,17 @@ void assign_goals(
         }
     }
 
-    // 3. RECORD THE ORDER: store each member's slot (aligned with members) and
-    // the shared anchor, so apply_formation can peel members off as they arrive.
-    order.members = members;
-    order.slots.assign(n, Vector3{ 0.0f, 0.0f, 0.0f });
-    order.anchor  = anchor;
-    for (int s = 0; s < n; ++s)
-        order.slots[slot_member[s]] = slots[s];
+    // 3. ASSIGN GOALS: each agent's slot (local) + the shared anchor (global).
+    for (int s = 0; s < n; ++s) {
+        const Vector3& slot = slots[s];
+        const int i = members[slot_member[s]];
 
-    // Point every member at the shared anchor (local target and global nav goal
-    // both the blob centre) so they path toward the blob as one group. Each
-    // member peels off to its own slot later, in apply_formation, once it has
-    // actually reached the blob.
-    for (int k = 0; k < n; ++k)
-        targets[members[k]] = nav_goal[members[k]] = anchor;
-}
+        // Already standing on this slot — leave it be.
+        if (Vector3Distance(positions[i], slot) <= reach) continue;
 
-void apply_formation(
-    const std::vector<Vector3>& positions,
-    std::vector<Vector3>&       targets,
-    const FormationOrder&       order)
-{
-    const float settle = get_formation_config().settle_radius;
-
-    // Mirror navigation.cpp's hand-off: a member is "in range" once it gets
-    // within the blob's radius (its slot's distance from the anchor) plus the
-    // settle margin of the shared anchor. From then on it steers at its own slot
-    // instead of the anchor.
-    for (int k = 0; k < (int)order.members.size(); ++k) {
-        const int     i      = order.members[k];
-        const Vector3 slot   = order.slots[k];
-        const float   blob_r = Vector3Distance(slot, order.anchor);
-
-        if (Vector3Distance(positions[i], order.anchor) <= blob_r + settle)
-            targets[i] = slot;
+        targets[i]  = slot;
+        nav_goal[i] = anchor;
     }
+
+    return slots;
 }

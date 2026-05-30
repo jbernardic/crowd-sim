@@ -98,12 +98,18 @@ void Game::run() {
             DrawRectangle(tx * (int)ts, ty * (int)ts, (int)ts, (int)ts, GRAY);
         }
 
+        const auto& slots = get_formation_slots();
+        // The follower slots sit behind the agents; slot 0 (the destination) is
+        // drawn last, on top of everything.
+        for (int i = 1; i < (int)slots.size(); ++i)
+            DrawCircleLines((int)slots[i].x, (int)slots[i].y, get_agent_config().radius, BLUE);
+
         auto positions    = get_agent_positions();
         const auto& tgts  = get_agent_targets();   // each agent's local slot goal
         const float settle = get_formation_config().settle_radius;
 
         for (const auto& t : tgts)
-            DrawCircleLines((int)t.x, (int)t.y, get_agent_config().radius, BLUE);
+            DrawCircleLines((int)t.x, (int)t.y, 5.0f, RED);
 
         for (int i = 0; i < (int)positions.size(); ++i) {
             const auto& pos = positions[i];
@@ -113,6 +119,10 @@ void Game::run() {
             Color color = selected ? YELLOW : (settled ? GREEN : RAYWHITE);
             DrawCircleV({ pos.x, pos.y }, get_agent_config().radius, color);
         }
+
+        // Destination slot on top of everything.
+        if (!slots.empty())
+            DrawCircleLines((int)slots[0].x, (int)slots[0].y, get_agent_config().radius, SKYBLUE);
 
         if (selecting)
             DrawRectangleLinesEx(selection, 1.0f / camera.zoom, { 255, 255, 255, 180 });
