@@ -34,13 +34,14 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
             members.push_back(i);
 
     formation_slots = apply_formation(agents.positions, agents.targets,
-                                      agents.destinations, members, pos);
+                                      agents.destinations, agents.nav_goal,
+                                      members, pos);
 }
 
 const std::vector<Vector3>& get_formation_slots() { return formation_slots; }
 
 void sim_tick(const float dt) {
-    apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, wall_tiles);
+    apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, agents.nav_goal, wall_tiles);
     apply_steering     (agents.positions, agents.targets, agents.vel);
     apply_avoidance    (agents.positions, agents.destinations, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);

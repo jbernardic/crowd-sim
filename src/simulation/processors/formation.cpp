@@ -52,6 +52,7 @@ std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
     std::vector<Vector3>&       destinations,
+    std::vector<Vector3>&       nav_goal,
     const std::vector<int>&     members,
     const Vector3&              destination)
 {
@@ -71,6 +72,13 @@ std::vector<Vector3> apply_formation(
                                           : Vector3{ 0.0f, 1.0f, 0.0f };
 
     const std::vector<Vector3> slots = build_blob_slots(destination, back, spacing, n);
+
+    // One shared navigation anchor for the whole formation: the blob's centroid.
+    // Every member paths toward this single point (so pathfinding builds one flow
+    // field for the group), then peels off to its own slot for the final leg.
+    Vector3 anchor = { 0.0f, 0.0f, 0.0f };
+    for (const Vector3& sp : slots) anchor = anchor + sp;
+    anchor = Vector3Scale(anchor, 1.0f / n);
 
     // FIX: Use Squared Distance to penalize overtakes and line intersections
     auto dist_sq = [&](int k, int s) {
@@ -127,6 +135,7 @@ std::vector<Vector3> apply_formation(
             Vector3Distance(targets[i], destinations[i]) <= 0.1f;
 
         destinations[i] = slot;
+        nav_goal[i]     = anchor;
         if (target_was_dest) targets[i] = slot;
     }
 

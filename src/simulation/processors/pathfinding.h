@@ -23,9 +23,14 @@ struct PathfindingContext {
     int      built_h    = -1;
 };
 
+// `nav_goal` is the point each agent paths toward (a per-formation shared anchor,
+// not the agent's individual slot). Routing to a shared anchor means one cached
+// flow field per formation instead of one per agent. `destinations` is still the
+// agent's own slot; once within the blob the agent steers straight to it.
 void apply_pathfinding(
     PathfindingContext&                 ctx,
     const std::vector<Vector3>&         positions,
     std::vector<Vector3>&               targets,
     const std::vector<Vector3>&         destinations,
+    const std::vector<Vector3>&         nav_goal,
     const std::unordered_set<uint64_t>& wall_tiles);

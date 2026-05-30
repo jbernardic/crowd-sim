@@ -146,6 +146,7 @@ void apply_pathfinding(
     const std::vector<Vector3>&         positions,
     std::vector<Vector3>&               targets,
     const std::vector<Vector3>&         destinations,
+    const std::vector<Vector3>&         nav_goal,
     const std::unordered_set<uint64_t>& wall_tiles)
 {
     const auto& cfg = get_pathfinding_config();
@@ -175,13 +176,22 @@ void apply_pathfinding(
     const float lookahead = get_arrival_config().arrival_radius + ts;
 
     for (int i = 0; i < (int)positions.size(); ++i) {
-        const Vector3 pos  = positions[i];
-        const Vector3 dest = destinations[i];
+        const Vector3 pos    = positions[i];
+        const Vector3 dest   = destinations[i];   // this agent's own slot
+        const Vector3 anchor = nav_goal[i];       // shared formation anchor
 
-        float dx = dest.x - pos.x, dy = dest.y - pos.y;
-        if (sqrtf(dx * dx + dy * dy) <= lookahead) { targets[i] = dest; continue; }
+        // Hand-off: once within the blob (its radius around the anchor, plus a
+        // margin) steer straight to the slot through the open blob interior — no
+        // field needed. By the triangle inequality this also covers "almost at
+        // my slot", so the slot's own cell never needs a field of its own.
+        const float bx = dest.x - anchor.x, by = dest.y - anchor.y;
+        const float blob_r = sqrtf(bx * bx + by * by);
+        const float ax = anchor.x - pos.x, ay = anchor.y - pos.y;
+        if (sqrtf(ax * ax + ay * ay) <= blob_r + lookahead) { targets[i] = dest; continue; }
 
-        int dgx, dgy; to_cell(dest.x, dest.y, dgx, dgy);
+        // Otherwise follow the shared field toward the anchor cell. Every member
+        // of a formation shares this cell, so the field is built and cached once.
+        int dgx, dgy; to_cell(anchor.x, anchor.y, dgx, dgy);
         uint64_t key = encode_tile(dgx, dgy);
         auto it = ctx.cache.find(key);
         if (it == ctx.cache.end())
