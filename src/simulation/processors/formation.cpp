@@ -175,7 +175,7 @@ void apply_formation(
         return dx * dx + dy * dy;
     };
 
-    constexpr int MAX_PASSES = 6;
+    constexpr int MAX_PASSES = 20;
     for (int pass = 0; pass < MAX_PASSES; ++pass) {
         bool improved = false;
         for (int a = 0; a < n; ++a) {
