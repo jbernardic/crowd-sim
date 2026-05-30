@@ -4,7 +4,7 @@
 
 void apply_avoidance(
     const std::vector<Vector3>& positions,
-    const std::vector<Vector3>& destinations,
+    const std::vector<Vector3>& targets,
     std::vector<Vector3>&       vel,
     float                       dt)
 {
@@ -21,7 +21,7 @@ void apply_avoidance(
     // way pass straight through the settled blob to reach their own slots.
     std::vector<char> settled(n);
     for (int i = 0; i < n; ++i) {
-        float d = Vector3Length(destinations[i] - positions[i]);
+        float d = Vector3Length(targets[i] - positions[i]);
         settled[i] = (d <= settle) ? 1 : 0;
     }
 

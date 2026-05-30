@@ -51,7 +51,6 @@ std::vector<Vector3> build_blob_slots(const Vector3& front, const Vector3& back,
 std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
-    std::vector<Vector3>&       destinations,
     std::vector<Vector3>&       nav_goal,
     const std::vector<int>&     members,
     const Vector3&              destination)
@@ -123,20 +122,16 @@ std::vector<Vector3> apply_formation(
         }
     }
 
-    // 3. APPLY DESTINATIONS
+    // 3. ASSIGN GOALS: each agent's slot (local) + the shared anchor (global).
     for (int s = 0; s < n; ++s) {
         const Vector3& slot = slots[s];
         const int i = members[slot_member[s]];
 
-        // Need standard linear distance for the arrival check
+        // Already standing on this slot — leave it be.
         if (Vector3Distance(positions[i], slot) <= reach) continue;
 
-        const bool target_was_dest =
-            Vector3Distance(targets[i], destinations[i]) <= 0.1f;
-
-        destinations[i] = slot;
-        nav_goal[i]     = anchor;
-        if (target_was_dest) targets[i] = slot;
+        targets[i]  = slot;
+        nav_goal[i] = anchor;
     }
 
     return slots;

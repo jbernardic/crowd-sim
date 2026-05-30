@@ -16,16 +16,16 @@
 // it currently equals the destination (i.e. the agent is in its final approach
 // and pathfinding would otherwise keep aiming at the old goal).
 //
-// All members share one navigation anchor (the blob centroid), written into
-// `nav_goal`. Pathfinding routes toward that single shared anchor — so it builds
-// one flow field per formation instead of one per slot — and only the final
-// approach inside the blob steers each agent to its individual slot.
+// Each member's own slot is written to `targets` (its local goal). All members
+// also share one navigation anchor (the blob centroid), written to `nav_goal`
+// (the global goal). Routing toward that single shared anchor means one flow
+// field is built per formation instead of one per slot; only the final approach
+// inside the blob steers each agent to its individual slot.
 //
 // Returns the slot positions (slot 0 first), so callers can visualise them.
 std::vector<Vector3> apply_formation(
     const std::vector<Vector3>& positions,
     std::vector<Vector3>&       targets,
-    std::vector<Vector3>&       destinations,
     std::vector<Vector3>&       nav_goal,
     const std::vector<int>&     members,
     const Vector3&              destination);

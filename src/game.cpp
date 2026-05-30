@@ -1,6 +1,5 @@
 #include "game.h"
 #include "simulation/engine.h"
-#include "simulation/processors/pathfinding.h"
 #include "ui.h"
 #include "raylib.h"
 #include "imgui.h"
@@ -65,16 +64,17 @@ void Game::run() {
         for (int i = 1; i < (int)slots.size(); ++i)
             DrawCircleLines((int)slots[i].x, (int)slots[i].y, get_agent_config().agent_radius, BLUE);
 
-        for (const auto& t : get_agent_targets())
+        auto positions    = get_agent_positions();
+        const auto& tgts  = get_agent_targets();   // each agent's local slot goal
+        const float settle = get_arrival_config().arrival_radius;
+
+        for (const auto& t : tgts)
             DrawCircleLines((int)t.x, (int)t.y, 5.0f, RED);
 
-        auto positions    = get_agent_positions();
-        const auto& dests = get_agent_destinations();
-        const float settle = get_arrival_config().arrival_radius;
         for (int i = 0; i < (int)positions.size(); ++i) {
             const auto& pos = positions[i];
             bool selected = CheckCollisionPointRec({ pos.x, pos.y }, selection);
-            float dx = dests[i].x - pos.x, dy = dests[i].y - pos.y;
+            float dx = tgts[i].x - pos.x, dy = tgts[i].y - pos.y;
             bool settled = (dx * dx + dy * dy) <= settle * settle;
             Color color = selected ? YELLOW : (settled ? GREEN : RAYWHITE);
             DrawCircleV({ pos.x, pos.y }, get_agent_config().agent_radius, color);

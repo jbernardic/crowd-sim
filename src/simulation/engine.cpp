@@ -1,10 +1,9 @@
 #include "engine.h"
 #include "agent.h"
-#include "processors/steering.h"
+#include "processors/navigation.h"
 #include "processors/avoidance.h"
 #include "processors/movement.h"
 #include "processors/walls.h"
-#include "processors/pathfinding.h"
 #include "processors/formation.h"
 #include <unordered_set>
 
@@ -34,20 +33,17 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
             members.push_back(i);
 
     formation_slots = apply_formation(agents.positions, agents.targets,
-                                      agents.destinations, agents.nav_goal,
-                                      members, pos);
+                                      agents.nav_goal, members, pos);
 }
 
 const std::vector<Vector3>& get_formation_slots() { return formation_slots; }
 
 void sim_tick(const float dt) {
-    apply_pathfinding (pf_ctx, agents.positions, agents.targets, agents.destinations, agents.nav_goal, wall_tiles);
-    apply_steering     (agents.positions, agents.targets, agents.vel);
-    apply_avoidance    (agents.positions, agents.destinations, agents.vel, dt);
+    apply_navigation   (pf_ctx, agents.positions, agents.nav_goal, agents.targets, agents.vel, wall_tiles);
+    apply_avoidance    (agents.positions, agents.targets, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
     apply_movement      (agents.positions, agents.vel, dt);
 }
 
-const std::vector<Vector3>& get_agent_positions()    { return agents.positions;    }
-const std::vector<Vector3>& get_agent_targets()      { return agents.targets;      }
-const std::vector<Vector3>& get_agent_destinations() { return agents.destinations; }
+const std::vector<Vector3>& get_agent_positions() { return agents.positions; }
+const std::vector<Vector3>& get_agent_targets()   { return agents.targets;   }

@@ -1,21 +1,21 @@
-#include "pathfinding.h"
+#include "navigation.h"
 #include "walls.h"
 #include "../config.h"
 #include "raylib.h"
+#include <algorithm>
 #include <cmath>
 #include <vector>
 #include <queue>
 #include <unordered_map>
 #include <limits>
 
-// Flow-field pathfinding.
+// Flow-field pathfinding + steering, combined.
 //
-// destinations[i] is each agent's final goal; targets[i] is what steering
-// chases. For every distinct destination cell we build a flow field once
-// (Dijkstra from the goal across walkable cells) and cache it. Each tick an
-// agent reads the flow vector at its cell and aims a short distance along it,
-// so steering follows the field around walls. The cache is dropped whenever
-// the walls, tile size or window dimensions change.
+// For every distinct nav-goal cell we build a flow field once (Dijkstra from the
+// goal across walkable cells) and cache it. Each tick an agent reads the flow
+// vector at its cell and aims a short distance along it, so steering follows the
+// field around walls. The cache is dropped whenever the walls, tile size or
+// window dimensions change.
 
 namespace {
 
@@ -141,29 +141,40 @@ Vector2 sample_flow(const FlowField& f, float x, float y, float ts) {
 
 } // namespace
 
-void apply_pathfinding(
+void apply_navigation(
     PathfindingContext&                 ctx,
     const std::vector<Vector3>&         positions,
-    std::vector<Vector3>&               targets,
-    const std::vector<Vector3>&         destinations,
     const std::vector<Vector3>&         nav_goal,
+    const std::vector<Vector3>&         targets,
+    std::vector<Vector3>&               vel,
     const std::unordered_set<uint64_t>& wall_tiles)
 {
-    const auto& cfg = get_pathfinding_config();
-    if (!cfg.enabled) return;
+    std::fill(vel.begin(), vel.end(), Vector3{ 0.0f, 0.0f, 0.0f });
+
+    const auto& scfg = get_steering_config();
+    if (!scfg.enabled) return;
+
+    const bool  use_field   = get_pathfinding_config().enabled;
+    const float slow_radius = get_arrival_config().arrival_radius;
 
     int   W  = GetScreenWidth();  if (W <= 0) W = 1280;
     int   H  = GetScreenHeight(); if (H <= 0) H = 720;
-    float ts = cfg.tile_size;     if (ts < 1.0f) ts = 1.0f;
+    float ts = get_pathfinding_config().tile_size; if (ts < 1.0f) ts = 1.0f;
     Grid  g{ (int)ceilf(W / ts), (int)ceilf(H / ts), ts };
 
-    uint64_t wxor = 0;
-    for (uint64_t k : wall_tiles) wxor ^= k;
-    if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count ||
-        ts != ctx.built_ts || W != ctx.built_w || H != ctx.built_h) {
-        ctx.cache.clear();
-        ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size();
-        ctx.built_ts = ts;   ctx.built_w = W; ctx.built_h = H;
+    // Aim the moving carrot a little past the slot radius so following the field
+    // never reads as "settled".
+    const float lookahead = slow_radius + ts;
+
+    if (use_field) {
+        uint64_t wxor = 0;
+        for (uint64_t k : wall_tiles) wxor ^= k;
+        if (wxor != ctx.wall_xor || wall_tiles.size() != ctx.wall_count ||
+            ts != ctx.built_ts || W != ctx.built_w || H != ctx.built_h) {
+            ctx.cache.clear();
+            ctx.wall_xor = wxor; ctx.wall_count = wall_tiles.size();
+            ctx.built_ts = ts;   ctx.built_w = W; ctx.built_h = H;
+        }
     }
 
     auto to_cell = [&](float x, float y, int& cx, int& cy) {
@@ -172,36 +183,46 @@ void apply_pathfinding(
         if (cy < 0) cy = 0; else if (cy >= g.gh) cy = g.gh - 1;
     };
 
-    // Aim past the arrival radius so the moving carrot never reads as "arrived".
-    const float lookahead = get_arrival_config().arrival_radius + ts;
-
     for (int i = 0; i < (int)positions.size(); ++i) {
-        const Vector3 pos    = positions[i];
-        const Vector3 dest   = destinations[i];   // this agent's own slot
-        const Vector3 anchor = nav_goal[i];       // shared formation anchor
+        const Vector3 pos  = positions[i];
+        const Vector3 slot = targets[i];   // local goal
 
-        // Hand-off: once within the blob (its radius around the anchor, plus a
-        // margin) steer straight to the slot through the open blob interior — no
-        // field needed. By the triangle inequality this also covers "almost at
-        // my slot", so the slot's own cell never needs a field of its own.
-        const float bx = dest.x - anchor.x, by = dest.y - anchor.y;
-        const float blob_r = sqrtf(bx * bx + by * by);
-        const float ax = anchor.x - pos.x, ay = anchor.y - pos.y;
-        if (sqrtf(ax * ax + ay * ay) <= blob_r + lookahead) { targets[i] = dest; continue; }
+        // The point we steer toward this tick. Default: straight to the slot.
+        Vector3 steer = slot;
 
-        // Otherwise follow the shared field toward the anchor cell. Every member
-        // of a formation shares this cell, so the field is built and cached once.
-        int dgx, dgy; to_cell(anchor.x, anchor.y, dgx, dgy);
-        uint64_t key = encode_tile(dgx, dgy);
-        auto it = ctx.cache.find(key);
-        if (it == ctx.cache.end())
-            it = ctx.cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
-        const FlowField& f = it->second;
+        if (use_field) {
+            const Vector3 anchor = nav_goal[i];   // shared global goal
 
-        Vector2 d = sample_flow(f, pos.x, pos.y, ts);
-        if (d.x == 0.0f && d.y == 0.0f)
-            targets[i] = dest;                                  // goal cell or no path
-        else
-            targets[i] = { pos.x + d.x * lookahead, pos.y + d.y * lookahead, 0.0f };
+            // Hand-off: once within the blob (its radius around the anchor, plus a
+            // margin) steer straight to the slot through the open blob interior.
+            // By the triangle inequality this also covers "almost at my slot", so
+            // a slot's own cell never needs a field of its own.
+            const float bx = slot.x - anchor.x, by = slot.y - anchor.y;
+            const float blob_r = sqrtf(bx * bx + by * by);
+            const float ax = anchor.x - pos.x, ay = anchor.y - pos.y;
+            if (sqrtf(ax * ax + ay * ay) > blob_r + lookahead) {
+                // Follow the shared field toward the anchor cell. Every member of
+                // a formation shares this cell, so the field is built/cached once.
+                int dgx, dgy; to_cell(anchor.x, anchor.y, dgx, dgy);
+                uint64_t key = encode_tile(dgx, dgy);
+                auto it = ctx.cache.find(key);
+                if (it == ctx.cache.end())
+                    it = ctx.cache.emplace(key, build_field(dgx, dgy, g, wall_tiles)).first;
+
+                Vector2 d = sample_flow(it->second, pos.x, pos.y, ts);
+                if (d.x != 0.0f || d.y != 0.0f)
+                    steer = { pos.x + d.x * lookahead, pos.y + d.y * lookahead, 0.0f };
+                // else no flow (goal cell / unreachable): keep steering at the slot.
+            }
+        }
+
+        // Steer toward the carrot, easing off within the slot radius so a unit
+        // settles gently (a passing unit can still nudge it; see avoidance).
+        float dx = steer.x - pos.x, dy = steer.y - pos.y;
+        float dist = sqrtf(dx * dx + dy * dy);
+        if (dist < 1.0f) continue;
+        float speed = (dist < slow_radius) ? scfg.speed * (dist / slow_radius)
+                                           : scfg.speed;
+        vel[i] = { dx / dist * speed, dy / dist * speed, 0.0f };
     }
 }

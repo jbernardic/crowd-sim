@@ -9,7 +9,6 @@
 void sim_tick(float dt);
 const std::vector<Vector3>& get_agent_positions();
 const std::vector<Vector3>& get_agent_targets();
-const std::vector<Vector3>& get_agent_destinations();
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos);
 const std::vector<Vector3>& get_formation_slots();
 

@@ -39,8 +39,8 @@ add_executable(crowd-sim
         src/ui.h
         src/simulation/config.h
         src/simulation/agent.h
-        src/simulation/processors/steering.h
-        src/simulation/processors/steering.cpp
+        src/simulation/processors/navigation.h
+        src/simulation/processors/navigation.cpp
         src/simulation/processors/movement.h
         src/simulation/processors/movement.cpp
         src/simulation/processors/avoidance.h
@@ -48,8 +48,6 @@ add_executable(crowd-sim
         src/simulation/processors/walls.cpp
         src/simulation/processors/walls.h
         src/simulation/config.cpp
-src/simulation/processors/pathfinding.cpp
-        src/simulation/processors/pathfinding.h
         src/simulation/processors/formation.cpp
         src/simulation/processors/formation.h
 )
