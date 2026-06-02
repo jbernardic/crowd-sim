@@ -21,6 +21,7 @@ static AgentData make_agents() {
 static AgentData agents = make_agents();
 static std::unordered_set<uint64_t> wall_tiles;
 static PathfindingContext pf_ctx;
+static AvoidanceContext   av_ctx;
 
 void add_wall_tile(int x, int y)                     { wall_tiles.insert(encode_tile(x, y)); }
 const std::unordered_set<uint64_t>& get_wall_tiles() { return wall_tiles; }
@@ -38,7 +39,7 @@ void spawn_agent(const Vector3& pos) { agents.add(pos); }
 
 void sim_tick(const float dt) {
     apply_navigation   (pf_ctx, agents.positions, agents.nav_goal, agents.targets, agents.vel, wall_tiles);
-    apply_avoidance    (agents.positions, agents.targets, agents.vel, dt);
+    apply_avoidance    (av_ctx, agents.positions, agents.targets, agents.vel, dt);
     apply_wall_collision(agents.positions, agents.vel, wall_tiles, dt);
     apply_movement      (agents.positions, agents.vel, dt);
 }
@@ -54,3 +55,4 @@ size_t get_flow_field_bytes() {
 
 const std::vector<Vector3>& get_agent_positions() { return agents.positions; }
 const std::vector<Vector3>& get_agent_targets()   { return agents.targets;   }
+const std::vector<char>&    get_agent_settled()   { return av_ctx.settled;   }

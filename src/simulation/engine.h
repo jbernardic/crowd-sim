@@ -10,6 +10,7 @@ void sim_tick(float dt);
 void spawn_agent(const Vector3& pos);
 const std::vector<Vector3>& get_agent_positions();
 const std::vector<Vector3>& get_agent_targets();
+const std::vector<char>&    get_agent_settled();   // latched settle state, parallel to positions
 void set_target_in_rect(const Rectangle& rect, const Vector3& pos);
 
 void add_wall_tile(int x, int y);

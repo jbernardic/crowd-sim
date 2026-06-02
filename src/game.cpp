@@ -98,9 +98,9 @@ void Game::run() {
             DrawRectangle(tx * (int)ts, ty * (int)ts, (int)ts, (int)ts, GRAY);
         }
 
-        auto positions    = get_agent_positions();
-        const auto& tgts  = get_agent_targets();   // each agent's local slot goal
-        const float settle = get_formation_config().settle_radius;
+        auto positions       = get_agent_positions();
+        const auto& tgts     = get_agent_targets();      // each agent's local slot goal
+        const auto& settledv = get_agent_settled();      // latched settle state
 
         for (const auto& t : tgts)
             DrawCircleLines((int)t.x, (int)t.y, get_agent_config().radius, BLUE);
@@ -108,8 +108,7 @@ void Game::run() {
         for (int i = 0; i < (int)positions.size(); ++i) {
             const auto& pos = positions[i];
             bool selected = CheckCollisionPointRec({ pos.x, pos.y }, selection);
-            float dx = tgts[i].x - pos.x, dy = tgts[i].y - pos.y;
-            bool settled = (dx * dx + dy * dy) <= settle * settle;
+            bool settled = i < (int)settledv.size() && settledv[i];
             Color color = selected ? YELLOW : (settled ? GREEN : RAYWHITE);
             DrawCircleV({ pos.x, pos.y }, get_agent_config().radius, color);
         }

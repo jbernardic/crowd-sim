@@ -40,11 +40,15 @@ struct PathfindingConfig {
 };
 
 struct AvoidanceConfig {
-    bool  enabled  = true;
-    float strength = 300.0f;
+    bool  enabled     = true;
+    float strength    = 300.0f;   // mutual push between two travelling agents
+    float settle_push = 50.0f;    // how strongly a settled agent steps aside for a passer-by
 
     std::vector<ConfigField> fields() {
-        return { ConfigFloatField{ "Strength", &strength, 0.0f, 1000.0f } };
+        return {
+            ConfigFloatField{ "Strength",    &strength,    0.0f, 1000.0f },
+            ConfigFloatField{ "Settle Push", &settle_push, 0.0f, 1000.0f },
+        };
     }
 };
 

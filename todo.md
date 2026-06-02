@@ -1,4 +1,5 @@
 ﻿- draw agent count
+- better formation, formation presets
 - flow field direction fix (make it more fluid and make it go diagonal)
 - wall pathfinding offset
 - hpa combination
