@@ -31,7 +31,7 @@ void set_target_in_rect(const Rectangle& rect, const Vector3& pos) {
         if (CheckCollisionPointRec({ agents.positions[i].x, agents.positions[i].y }, rect))
             members.push_back(i);
 
-    apply_formation(agents.positions, agents.targets,agents.nav_goal, members, pos);
+    apply_formation(agents.positions, agents.targets, agents.nav_goal, members, pos, wall_tiles);
 }
 
 void spawn_agent(const Vector3& pos) { agents.add(pos); }

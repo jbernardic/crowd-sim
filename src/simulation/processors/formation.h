@@ -1,5 +1,7 @@
 #pragma once
 #include "raylib.h"
+#include <cstdint>
+#include <unordered_set>
 #include <vector>
 
 // Arranges a group of agents into a hex-packed "blob" centred on `destination`.
@@ -22,10 +24,14 @@
 // field is built per formation instead of one per slot; only the final approach
 // inside the blob steers each agent to its individual slot.
 //
+// Slots that would land on a wall tile are skipped while the blob is laid out,
+// so no member is ever sent to stand inside a wall.
+//
 // Returns the slot positions (slot 0 first), so callers can visualise them.
 void apply_formation(
-    const std::vector<Vector3>& positions,
-    std::vector<Vector3>&       targets,
-    std::vector<Vector3>&       nav_goal,
-    const std::vector<int>&     members,
-    const Vector3&              destination);
+    const std::vector<Vector3>&         positions,
+    std::vector<Vector3>&               targets,
+    std::vector<Vector3>&               nav_goal,
+    const std::vector<int>&             members,
+    const Vector3&                      destination,
+    const std::unordered_set<uint64_t>& wall_tiles);

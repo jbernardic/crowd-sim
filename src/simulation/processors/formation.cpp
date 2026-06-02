@@ -1,4 +1,5 @@
 #include "formation.h"
+#include "walls.h"
 #include "../config.h"
 #include "raymath.h"
 #include <algorithm>
@@ -17,17 +18,78 @@
 // formation looks like a naturally clumped crowd.
 namespace {
 
+inline uint64_t cell_key(int cx, int cy) {
+    return ((uint64_t)(uint32_t)cx << 32) | (uint64_t)(uint32_t)cy;
+}
+
+// `occupied` are slots already claimed by agents outside this formation; no new
+// slot is placed within `min_sep` of one, so members never pile onto a standing
+// agent's slot. (Within a single blob the hex lattice already keeps slots apart.)
 std::vector<Vector3> build_blob_slots(const Vector3& front, const Vector3& back,
-                                      float spacing, int count) {
+                                      float spacing, int count,
+                                      const std::unordered_set<uint64_t>& walls,
+                                      const std::vector<Vector3>& occupied,
+                                      float min_sep) {
     std::vector<Vector3> slots;
     if (count <= 0) return slots;
 
     const float h = 0.8660254f; // sqrt(3) / 2
 
+    const float wts = get_wall_config().tile_size;
+    const float rad = get_agent_config().radius;
+
+    // True if an agent of radius `rad` centred on `p` would overlap any wall tile,
+    // not just when its centre lands on one -- a slot must keep clear of the wall
+    // by the agent's radius. Test the circle against every wall tile in its
+    // bounding box (closest-point-on-rect distance).
+    auto overlaps_wall = [&](const Vector3& p) {
+        int minx = (int)floorf((p.x - rad) / wts), maxx = (int)floorf((p.x + rad) / wts);
+        int miny = (int)floorf((p.y - rad) / wts), maxy = (int)floorf((p.y + rad) / wts);
+        for (int ty = miny; ty <= maxy; ++ty)
+            for (int tx = minx; tx <= maxx; ++tx) {
+                if (!walls.count(encode_tile(tx, ty))) continue;
+                const float rx = tx * wts, ry = ty * wts;
+                const float cx = std::clamp(p.x, rx, rx + wts);
+                const float cy = std::clamp(p.y, ry, ry + wts);
+                const float dx = p.x - cx, dy = p.y - cy;
+                if (dx * dx + dy * dy < rad * rad) return true;
+            }
+        return false;
+    };
+
+    // Spatial hash of already-claimed slots, bucketed at the separation distance
+    // so a candidate only has to check its own and the 8 neighbouring buckets.
+    const float ocell = min_sep > 0.001f ? min_sep : 1.0f;
+    std::unordered_map<uint64_t, std::vector<Vector2>> ogrid;
+    ogrid.reserve(occupied.size() * 2 + 1);
+    for (const Vector3& o : occupied)
+        ogrid[cell_key((int)floorf(o.x / ocell), (int)floorf(o.y / ocell))].push_back({ o.x, o.y });
+
+    auto near_occupied = [&](const Vector3& p) {
+        const int qx = (int)floorf(p.x / ocell), qy = (int)floorf(p.y / ocell);
+        for (int dy = -1; dy <= 1; ++dy)
+            for (int dx = -1; dx <= 1; ++dx) {
+                auto it = ogrid.find(cell_key(qx + dx, qy + dy));
+                if (it == ogrid.end()) continue;
+                for (const Vector2& o : it->second) {
+                    const float ddx = p.x - o.x, ddy = p.y - o.y;
+                    if (ddx * ddx + ddy * ddy < min_sep * min_sep) return true;
+                }
+            }
+        return false;
+    };
+
+    // Candidates rejected for hitting a wall or an existing slot, kept only as a
+    // last-resort fallback so a destination boxed in by walls/other agents still
+    // yields `count` slots instead of looping forever looking for open ground.
+    std::vector<Vector3> spill;
+    constexpr int R_CAP = 64;
+
     // Only the back half of the disk is usable, so grow the lattice radius until
-    // enough cells survive the front-side cull.
+    // enough clear (non-wall, unoccupied) cells survive the front-side cull.
     for (int R = 0; ; ++R) {
         slots.clear();
+        spill.clear();
         for (int q = -R; q <= R; ++q)
             for (int r = -R; r <= R; ++r) {
                 int hex_dist = (std::abs(q) + std::abs(q + r) + std::abs(r)) / 2;
@@ -35,31 +97,40 @@ std::vector<Vector3> build_blob_slots(const Vector3& front, const Vector3& back,
                 Vector3 off = { spacing * (q + r * 0.5f), spacing * (h * r), 0.0f };
                 // Drop cells in front of the destination (keep slot 0 itself).
                 if (Vector3DotProduct(off, back) < -0.001f) continue;
-                slots.push_back({ front.x + off.x, front.y + off.y, front.z });
+                Vector3 sp = { front.x + off.x, front.y + off.y, front.z };
+                if (overlaps_wall(sp) || near_occupied(sp)) spill.push_back(sp);
+                else                                        slots.push_back(sp);
             }
-        if ((int)slots.size() >= count) break;
+        if ((int)slots.size() >= count || R >= R_CAP) break;
     }
 
-    std::sort(slots.begin(), slots.end(), [&](const Vector3& a, const Vector3& b) {
+    auto by_dist = [&](const Vector3& a, const Vector3& b) {
         return Vector3LengthSqr(a - front) < Vector3LengthSqr(b - front);
-    });
+    };
+    std::sort(slots.begin(), slots.end(), by_dist);
+
+    // Top up from the nearest rejected cells only if clear ground ran out.
+    if ((int)slots.size() < count) {
+        std::sort(spill.begin(), spill.end(), by_dist);
+        for (const Vector3& sp : spill) {
+            if ((int)slots.size() >= count) break;
+            slots.push_back(sp);
+        }
+    }
 
     slots.resize(count);
     return slots;
 }
 
-inline uint64_t cell_key(int cx, int cy) {
-    return ((uint64_t)(uint32_t)cx << 32) | (uint64_t)(uint32_t)cy;
-}
-
 } // namespace
 
 void apply_formation(
-    const std::vector<Vector3>& positions,
-    std::vector<Vector3>&       targets,
-    std::vector<Vector3>&       nav_goal,
-    const std::vector<int>&     members,
-    const Vector3&              destination)
+    const std::vector<Vector3>&         positions,
+    std::vector<Vector3>&               targets,
+    std::vector<Vector3>&               nav_goal,
+    const std::vector<int>&             members,
+    const Vector3&                      destination,
+    const std::unordered_set<uint64_t>& wall_tiles)
 {
     const auto& cfg = get_formation_config();
 
@@ -78,7 +149,17 @@ void apply_formation(
     back = (Vector3Length(back) > 0.001f) ? Vector3Normalize(back)
                                           : Vector3{ 0.0f, 1.0f, 0.0f };
 
-    const std::vector<Vector3> slots = build_blob_slots(destination, back, spacing, n);
+    // Slots already claimed by agents outside this formation, so we don't drop a
+    // new slot on top of one. Members being re-placed here are excluded.
+    std::vector<uint8_t> is_member(positions.size(), 0);
+    for (int k = 0; k < n; ++k) is_member[members[k]] = 1;
+    std::vector<Vector3> occupied;
+    occupied.reserve(positions.size() - n);
+    for (int i = 0; i < (int)positions.size(); ++i)
+        if (!is_member[i]) occupied.push_back(targets[i]);
+
+    const std::vector<Vector3> slots =
+        build_blob_slots(destination, back, spacing, n, wall_tiles, occupied, diameter);
 
     // One shared navigation anchor for the whole formation: the blob's centroid.
     // Every member paths toward this single point (so pathfinding builds one flow

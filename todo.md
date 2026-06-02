@@ -1,0 +1,7 @@
+﻿- draw agent count
+- flow field direction fix (make it more fluid and make it go diagonal)
+- wall pathfinding offset
+- hpa combination
+- better design
+- emscripten
+- ue5 bindings
